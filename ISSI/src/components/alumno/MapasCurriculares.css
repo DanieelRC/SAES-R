@@ -1,0 +1,336 @@
+:root {
+  --cl-guinda: #7d0024;
+  --cl-guinda-dark: #60001c;
+  --cl-border: #e5e7eb;
+  --cl-text: #222222;
+  --cl-muted: #6b7280;
+}
+
+/* ============================
+   LAYOUT MAPAS
+   ============================ */
+
+.mapas-main {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.alumno-header {
+  margin-bottom: 1.5rem;
+}
+
+/* ============================
+   CARD PRINCIPAL 
+   ============================ */
+.clases-card {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  margin-top: 2rem;
+  padding: 2rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Encabezado dentro de la card */
+.clases-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.3rem;
+}
+
+.clases-title {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--cl-text);
+}
+
+/* Botón opcional de cerrar (cuando se usa como modal) */
+.clases-close {
+  padding: 0.45rem 1.3rem;
+  border-radius: 999px;
+  border: 1px solid var(--cl-border);
+  background: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    box-shadow 0.15s ease,
+    transform 0.08s ease;
+}
+
+.clases-close:hover {
+  background-color: #f5edf7;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.12);
+  transform: translateY(-1px);
+}
+
+/* Wrapper de tabla (para scroll horizontal en pantallas chicas) */
+.clases-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+/* ============================
+   TABLA
+   ============================ */
+.clases-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.95rem;
+}
+
+/* Encabezado */
+.clases-table thead tr {
+  background-color: #fafafa;
+}
+
+.clases-table th,
+.clases-table td {
+  padding: 10px 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.clases-table th {
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: #4b5563;
+}
+
+/* Alternar color de filas para mejor lectura */
+.clases-table tbody tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+/* Hover suave en fila */
+.clases-table tbody tr:hover {
+  background-color: #f4f4ff;
+}
+
+/* Columnas un poquito más anchas donde hace falta
+   (2 columnas: UA / Programa) */
+.clases-table td:first-child {
+  font-weight: 500;
+}
+
+.clases-table td:nth-child(1) {
+  min-width: 260px;
+}
+
+.clases-table td:nth-child(2),
+.clases-table th:nth-child(2) {
+  width: 150px;
+  text-align: center;
+}
+
+/* Celda de acciones (última columna) */
+.clases-actions {
+  white-space: nowrap;
+  text-align: center;
+}
+
+/* ============================
+   BOTONES (PDF / Excel / Pasar lista)
+   ============================ */
+.cl-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 1.4rem;
+  font-size: 0.85rem;
+  border-radius: 8px;
+  border: none;
+  background-color: var(--cl-guinda);
+  color: #ffffff;
+  cursor: pointer;
+  margin-left: 6px;
+  font-weight: 500;
+  text-decoration: none;
+  transition:
+    background-color 0.15s ease,
+    box-shadow 0.15s ease,
+    transform 0.05s ease;
+}
+
+.cl-btn:first-child {
+  margin-left: 0;
+}
+
+/* Hover / active */
+.cl-btn:hover {
+  background-color: var(--cl-guinda-dark);
+  box-shadow: 0 4px 12px rgba(125, 0, 36, 0.4);
+  transform: translateY(-1px);
+}
+
+.cl-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(125, 0, 36, 0.35);
+}
+
+/* Ya no hacemos diferencia visual entre outline / primary,
+   pero dejamos las clases por si el JSX las sigue usando */
+.cl-btn-outline {
+  /* sin cambios extra, hereda de .cl-btn */
+}
+
+.cl-btn-primary {
+  font-weight: 300;
+}
+
+/* ============================
+   PAGINACIÓN (por si luego la usas)
+   ============================ */
+.clases-pagination {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+.clases-page-info {
+  font-size: 0.9rem;
+  color: var(--cl-muted);
+}
+
+.clases-page-btn {
+  padding: 0.4rem 1.1rem;
+  border-radius: 999px;
+  border: 1px solid var(--cl-border);
+  background: #ffffff;
+  font-size: 0.85rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition:
+    background-color 0.15s ease,
+    box-shadow 0.15s ease,
+    transform 0.05s ease;
+}
+
+.clases-page-btn:hover:not(:disabled) {
+  background-color: #f5edf7;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.12);
+  transform: translateY(-1px);
+}
+
+.clases-page-btn:disabled {
+  opacity: 0.55;
+  cursor: default;
+  box-shadow: none;
+}
+
+@media (max-width: 640px) {
+  .clases-pagination {
+    justify-content: center;
+  }
+}
+
+/* ============================
+   RESPONSIVE
+   ============================ */
+@media (max-width: 900px) {
+  .clases-card {
+    padding: 1.6rem 1.4rem;
+    margin-top: 1.8rem;
+  }
+
+  .clases-table {
+    font-size: 0.9rem;
+  }
+
+  .clases-table th,
+  .clases-table td {
+    padding: 8px 10px;
+  }
+}
+
+@media (max-width: 640px) {
+  .clases-card {
+    padding: 1.4rem 1rem;
+  }
+
+  .clases-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+  }
+
+  .clases-actions {
+    text-align: left;
+  }
+
+  .cl-btn {
+    margin-top: 4px;
+  }
+}
+
+/* ============================
+   MAPA CURRICULAR
+   ============================ */
+
+.mapa-card {
+  margin-top: 0; /* ya tiene margin-top por .clases-card */
+}
+
+.mapa-img-wrapper {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.mapa-img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.12);
+}
+
+.mapa-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* ============================
+   PROGRAMAS: header + buscador
+   ============================ */
+
+.programas-header p {
+  margin: 0 0 0.4rem 0;
+  font-size: 0.9rem;
+  color: var(--cl-muted);
+}
+
+.programas-search {
+  margin-bottom: 1rem;
+}
+
+.programas-search input {
+  width: 100%;
+  max-width: 460px;
+  border-radius: 999px;
+  border: 1px solid var(--cl-border);
+  padding: 0.55rem 1rem;
+  font-size: 0.9rem;
+  outline: none;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.programas-search input:focus {
+  border-color: var(--cl-guinda);
+  box-shadow: 0 0 0 2px rgba(125, 0, 36, 0.18);
+}
+
+.programas-empty {
+  text-align: center;
+  padding: 1.2rem 0.5rem;
+  font-size: 0.9rem;
+  color: var(--cl-muted);
+}

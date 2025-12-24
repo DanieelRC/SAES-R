@@ -1,0 +1,340 @@
+.gp-layout {
+  display: flex;
+  height: 100vh;
+  /* overflow: hidden;  <-- Removed to avoid clipping fixed children if any, though modal is outside main now */
+}
+
+.gp-main-content {
+  flex: 1;
+  margin-left: 320px;
+  padding: 30px 50px;
+  overflow-y: auto; /* Keep internal scroll */
+  background-color: #fafafa;
+}
+
+.contenedor-profesores {
+  padding: 30px 50px;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background-color: #fafafa;
+  color: #333;
+}
+
+.titulo {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #222;
+}
+
+.barra-superior {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.botones-acciones .btn {
+  margin-right: 10px;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.btn.registrar {
+  background-color: #7a0026;
+  color: #fff;
+}
+
+.btn.editar {
+  background-color: #e1e1e1;
+  color: #333;
+}
+
+.btn.eliminar {
+  background-color: #c0392b;
+  color: white;
+}
+
+.btn:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.busqueda input,
+.busqueda select {
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-left: 10px;
+  font-size: 14px;
+}
+
+.tabla-contenedor {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  overflow-x: auto; /* Permite scroll horizontal */
+  margin-top: 20px
+}
+
+.tabla-profesores {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tabla-profesores th {
+  background-color: #7a0026;
+  color: white;
+  text-align: left;
+  padding: 12px;
+  font-weight: 600;
+}
+
+.tabla-profesores td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.tabla-profesores tr:hover {
+  background-color: #f8f8f8;
+}
+
+.btn-tabla {
+  border: none;
+  padding: 6px 10px;
+  border-radius: 5px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.btn-tabla.editar {
+  background-color: #3498db;
+  color: white;
+  margin-right: 5px;
+}
+
+.btn-tabla.eliminar {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.sin-registros {
+  text-align: center;
+  color: #777;
+  padding: 15px;
+}
+
+.modal-fondo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  background-color: white;
+  padding: 25px;
+  border-radius: 10px;
+  text-align: center;
+  width: 320px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+.modal h3 {
+  margin-bottom: 10px;
+}
+
+.modal-botones {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.btn.cancelar {
+  background-color: #7f8c8d;
+  color: white;
+}
+
+
+
+.busqueda {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #f8f9fa;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 5px 10px;
+  transition: box-shadow 0.2s;
+}
+
+.busqueda input {
+  border: none;
+  outline: none;
+  background: transparent;
+  flex: 1;
+  font-size: 14px;
+}
+
+.btn-buscar {
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-buscar:hover {
+  background: #0056b3;
+}
+
+.busqueda:focus-within {
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.tabla-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px; /* ← SEPARA LOS ELEMENTOS */
+}
+
+.busqueda {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* ← SEPARA input y botón */
+}
+
+.busqueda input {
+  padding: 6px 10px;
+}
+
+.btn-buscar {
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+.tabla-header .btn.azul,
+.tabla-header .btn.registrar {
+  flex-shrink: 0;     /* No se estira */
+  width: auto;        /* Tamaño natural */
+  padding: 10px 16px; /* Botón compacto */
+  white-space: nowrap; /* El texto no se parte */
+}
+
+.tabla-header h2 {
+  flex-shrink: 0;
+}
+
+.tabla-header .busqueda {
+  flex-grow: 0; /* NO crece */
+}
+
+.tabla-header .btn.azul {
+  flex-shrink: 0; /* NO se achica ni se estira */
+  width: auto;
+}
+.tabla-header .btn.registrar {
+  flex-shrink: 0;
+  width: auto;
+}
+.tabla-header h2 {
+  flex-grow: 1; /* solo el título crece */
+}
+.tabla-header .btn.azul,
+.tabla-header .btn.registrar {
+  margin-right: auto;
+}
+
+/* Estilos para el modal de confirmación */
+.gp-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+}
+
+.gp-modal {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 90%;
+  max-width: 400px;
+  position: relative;
+  z-index: 100000;
+}
+
+.modal h3 {
+  margin-top: 0;
+}
+
+.modal-botones {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.modal-botones .btn.rojo {
+  background-color: #dc2626;
+  color: white;
+}
+
+.modal-botones .btn.rojo:hover {
+  background-color: #b91c1c;
+}
+
+.modal-botones .btn.gris {
+  background-color: #6b7280;
+  color: white;
+}
+
+.modal-botones .btn.gris:hover {
+  background-color: #4b5563;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .gp-main-content {
+    margin-left: 0;
+    padding: 20px 15px;
+  }
+  
+  .barra-superior {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 15px;
+  }
+  
+  .tabla-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

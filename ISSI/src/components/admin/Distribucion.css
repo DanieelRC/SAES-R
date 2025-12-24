@@ -1,0 +1,229 @@
+:root {
+  --guinda: #6e0028;
+  --guinda-2: #8b0e39;
+  --azul: #0033a0;
+  --azul-10: #e6eeff;
+  --borde: #e5e7eb;
+  --bg: #ffffff;
+  --ink: #0f172a;
+  --muted: #6b7280;
+  --ok: #148451;
+  --err: #d93025;
+
+  --radius-lg: 18px;
+  --radius-md: 12px;
+  --shadow-md: 0 10px 24px rgba(15, 23, 42, 0.12);
+}
+
+/* Contenedor general */
+.dist-wrap {
+  max-width: 900px;
+  margin: 32px auto 40px;
+  padding: 0 20px 32px;
+  background: var(--bg);
+  color: var(--ink);
+  box-sizing: border-box;
+}
+
+/* Título */
+.dist-title {
+  margin: 0 0 10px;
+  font-size: 1.9rem;
+  font-weight: 800;
+  color: var(--guinda);
+  border-bottom: 3px solid var(--guinda);
+  display: inline-block;
+  padding-bottom: 4px;
+}
+
+/* Mensaje de feedback */
+.dist-message {
+  margin-top: 10px;
+  margin-bottom: 8px;
+  padding: 8px 10px;
+  border-radius: var(--radius-md);
+  background: #f1fbf5;
+  color: var(--ok);
+  border: 1px solid #a8e6c1;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* Tabla de distribución */
+.dist-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+  font-size: 0.95rem;
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+.dist-table thead {
+  background: linear-gradient(135deg, var(--guinda), var(--guinda-2));
+}
+
+.dist-table thead th {
+  color: #ffffff;
+  text-align: left;
+  padding: 10px 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.dist-table tbody td {
+  padding: 10px 12px;
+  border-top: 1px solid var(--borde);
+}
+
+.dist-table tbody tr:nth-child(even) {
+  background: #fafafa;
+}
+
+.dist-table tbody tr:hover {
+  background: #f3f4ff;
+}
+
+/* Fila vacía */
+.dist-empty {
+  text-align: center;
+  padding: 18px 12px;
+  color: var(--muted);
+  font-style: italic;
+}
+
+/* Botón genérico (Agregar día, Eliminar en tabla) */
+.btn {
+  border-radius: 999px;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: filter 0.2s ease, transform 0.04s ease, box-shadow 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+/* Botón superior "Agregar un día" */
+.dist-add-btn {
+  margin-top: 10px;
+  background: linear-gradient(135deg, var(--guinda), var(--guinda-2));
+  color: #ffffff;
+  box-shadow: 0 10px 18px rgba(110, 0, 40, 0.18);
+}
+
+.dist-add-btn:hover {
+  filter: saturate(1.05) brightness(1.02);
+}
+
+/* Botón eliminar de tabla */
+.dist-btn-delete {
+  background: #fff5f5;
+  border-color: #fca5a5;
+  color: #b91c1c;
+}
+
+.dist-btn-delete:hover {
+  background: #fee2e2;
+}
+
+/* Formulario del modal (registrar día) */
+.formulario.dist-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.formulario.dist-form label {
+  font-weight: 700;
+  color: #111827;
+  margin: 4px 0 2px;
+}
+
+.formulario.dist-form select,
+.formulario.dist-form input[type="time"] {
+  border-radius: var(--radius-md);
+  border: 1px solid var(--borde);
+  padding: 8px 10px;
+  outline: none;
+  font-size: 0.95rem;
+  background: #ffffff;
+  transition: border 0.2s ease, box-shadow 0.2s ease, transform 0.03s ease;
+}
+
+.formulario.dist-form select:focus,
+.formulario.dist-form input[type="time"]:focus {
+  border-color: var(--azul);
+  box-shadow: 0 0 0 3px rgba(0, 51, 160, 0.15);
+}
+
+/* Título dentro de los modales */
+.titulo.dist-modal-title {
+  margin: 0 0 6px;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--guinda);
+}
+
+/* Texto del modal de confirmación */
+.dist-modal-text {
+  font-size: 0.95rem;
+  color: var(--muted);
+  margin: 4px 0 10px;
+}
+
+/* Botón enviar / confirmar en modales */
+.btn-enviar {
+  margin-top: 12px;
+  align-self: flex-end;
+  border-radius: 999px;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  font-size: 0.9rem;
+  font-weight: 800;
+  cursor: pointer;
+  background: linear-gradient(135deg, var(--guinda), var(--guinda-2));
+  color: #ffffff;
+  box-shadow: 0 8px 16px rgba(110, 0, 40, 0.18);
+  transition: filter 0.2s ease, transform 0.04s ease, box-shadow 0.2s ease;
+}
+
+.btn-enviar:hover {
+  filter: saturate(1.05) brightness(1.02);
+}
+
+.btn-enviar:active {
+  transform: translateY(1px);
+}
+
+/* Botón eliminar peligro en modal de confirmación */
+.dist-btn-danger {
+  background: #b91c1c;
+  box-shadow: 0 8px 16px rgba(185, 28, 28, 0.25);
+}
+
+.dist-btn-danger:hover {
+  filter: brightness(1.05);
+}
+
+/* Responsivo */
+@media (max-width: 640px) {
+  .dist-wrap {
+    padding-inline: 14px;
+  }
+
+  .dist-title {
+    font-size: 1.6rem;
+  }
+
+  .dist-table thead th,
+  .dist-table tbody td {
+    padding: 8px 10px;
+  }
+}

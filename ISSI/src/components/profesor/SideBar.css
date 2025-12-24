@@ -1,0 +1,266 @@
+/* ===============================
+   SOLO ESTILOS DEL SIDEBAR
+=============================== */
+.alumno-container {
+  display: flex;
+  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+  background-color: #f9f9fb;
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 320px;
+  height: 100vh;
+  background: #fff;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.08);
+  z-index: 10;
+  overflow: hidden;
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 1.25rem;
+  padding-right: 12px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 0;
+}
+
+.logo-img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+
+.logo span {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #333;
+  white-space: nowrap;
+}
+
+/* Botón X para ocultar */
+.sidebar-close {
+  border: none;
+  background: rgba(0, 0, 0, 0.06);
+  color: #333;
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.2s ease;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+}
+
+.sidebar-close:hover {
+  transform: translateY(-1px);
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-close:active {
+  transform: scale(0.98);
+}
+
+/* Menú */
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+  padding-top: 10px;
+}
+
+.menu-item {
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #4b5563;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+  
+  /* Flex for icon + text */
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.menu-item .icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  width: 24px;
+}
+
+.menu-item .label {
+  font-size: 0.95rem;
+}
+
+.menu-item:hover {
+  background-color: #fdf2f4;
+  color: #7d0024;
+  transform: translateX(4px);
+}
+
+.menu-item.active {
+  background-color: #f3d9df;
+  color: #7d0024;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(125, 0, 36, 0.08);
+}
+
+/* Logout */
+.logout {
+  margin-top: auto;
+  background: none;
+  border: none;
+  color: #7d0024;
+  cursor: pointer;
+  font-weight: 600;
+  padding: 16px;
+  border-radius: 8px;
+  transition: background 0.2s;
+  
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.logout:hover {
+  background-color: #fce7eb;
+}
+
+/* Sidebar cerrado: no captura interacción */
+.sidebar.is-closed {
+  transform: translateX(-110%);
+  pointer-events: none;
+}
+
+/* Overlay: siempre (desktop y móvil) */
+.sidebar-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 9;
+  display: block; /* antes: none */
+}
+
+.sidebar-overlay.show {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* Barra superior del sidebar */
+.sidebar-topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  background: #ffffff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  z-index: 25; /* sidebar=10, overlay=9 */
+}
+
+.sidebar-topbar-btn {
+  border: none;
+  cursor: pointer;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: #7d0024;
+  color: #fff;
+  font-size: 20px;
+  line-height: 1;
+}
+
+/* ===== FIX GLOBAL: eliminar gutter izquierdo en todas las vistas ===== */
+html,
+body {
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+}
+
+#root {
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+}
+
+/* padding mínimo para el contenido (sin reservar columna) */
+main,
+.alumno-container {
+  margin-left: 0 !important;
+  padding-left: 12px !important;   /* antes: 0 */
+  padding-right: 12px !important;
+  box-sizing: border-box;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 280px; 
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .sidebar.is-closed {
+    transform: translateX(-100%);
+  }
+  
+  .sidebar.is-open {
+    transform: translateX(0);
+  }
+
+  /* Botón hamburguesa visible en móvil */
+  .sidebar-topbar-btn {
+    display: flex; 
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 1100;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background: #7d0024;
+    color: #fff;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  }
+}
+
+.logo span {
+  font-size: 1.3rem; 
+}

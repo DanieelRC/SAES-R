@@ -1,0 +1,103 @@
+.encabezado-section h1 {
+    display: flex;
+  justify-content: center; 
+   font-family: 'Montserrat', sans-serif;
+  font-size: 1.5rem; /* tamaño de la letra */
+  color: #000000; /* color del texto */
+  text-align: center; /* centrar el texto */
+  font-weight: bold; /* ponerlo en negritas */
+  text-transform: uppercase; /* mayúsculas */
+  margin-top: 5px; /* separación superior */
+  margin-bottom: 5px; /* separación inferior */
+  margin-left: 15px;
+  letter-spacing: 2px; /* espacio entre letras */
+  gap: 20px;
+  
+}
+
+.encabezado-section {
+  background-color: #ffffff;
+  padding: 10px;
+  border-radius: 10px;
+  gap: 20px;
+  
+}
+
+.horario-section {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  margin-top: 2rem;
+  padding: 2rem;
+  width: 100%;
+}
+
+.horario-section h2 {
+  color: #222;
+  margin-bottom: 1.2rem;
+  font-size: 1.2rem;
+}
+
+.horario-table1 {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.horario-table1 th,
+.horario-table1 td {
+  padding: 10px 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.horario-table1 th {
+  background-color: #fafafa;
+  font-weight: 600;
+}
+
+.horario {
+  display: inline-block;
+  background-color: #eef0f7;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.download-button {
+  display: flex;
+  justify-content: center; /* 👈 centra horizontalmente los botones */
+  align-items: center;     /* 👈 los alinea verticalmente */
+  gap: 15px;               /* 👈 espacio entre los botones */
+  margin-top: 20px;        /* opcional: separa del contenido superior */
+}
+
+
+
+.resenas-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.resenas-table th,
+.resenas-table td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  vertical-align: top;
+}
+
+.resenas-table th {
+  background: #f4f4f4;
+  text-align: center;
+}
+
+.resena-comentario {
+  max-height: 120px; 
+  overflow-y: auto;
+  padding: 6px;
+  background: #fafafa;
+  border-radius: 6px;
+  line-height: 1.3;
+  border: 1px solid #ddd;
+}

@@ -1,0 +1,129 @@
+:root {
+  --guinda: #6e0028;
+  --guinda-2: #8b0e39;
+  --azul: #0033a0;
+  --azul-10: #e6eeff;
+  --borde: #e5e7eb;
+  --bg: #ffffff;
+  --ink: #0f172a;
+  --muted: #6b7280;
+
+  --radius-lg: 18px;
+  --radius-md: 12px;
+  --shadow-md: 0 10px 24px rgba(15, 23, 42, 0.12);
+}
+
+/* Contenedor general */
+.ea-wrap {
+  max-width: 1100px;
+  margin: 32px auto 40px;
+  padding: 0 20px 32px;
+  background: var(--bg);
+  color: var(--ink);
+  box-sizing: border-box;
+}
+
+/* Título principal */
+.ea-title {
+  margin: 0 0 16px;
+  font-size: 1.9rem;
+  font-weight: 800;
+  color: var(--guinda);
+  border-bottom: 3px solid var(--guinda);
+  display: inline-block;
+  padding-bottom: 4px;
+}
+
+/* Tarjeta del formulario */
+.ea-card {
+  margin-top: 12px;
+  background: #ffffff;
+  border: 1px solid var(--borde);
+  border-radius: var(--radius-lg);
+  padding: 20px 20px 22px;
+  box-shadow: var(--shadow-md);
+}
+
+/* Formulario general */
+.formulario.ea-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Etiquetas */
+.formulario.ea-card label {
+  font-weight: 700;
+  color: #111827;
+  margin: 4px 0 4px;
+}
+
+/* Inputs y selects */
+.formulario.ea-card input,
+.formulario.ea-card select {
+  border: 1px solid var(--borde);
+  border-radius: var(--radius-md);
+  padding: 9px 11px;
+  outline: none;
+  font-size: 0.95rem;
+  background: #ffffff;
+  transition: border 0.2s ease, box-shadow 0.2s ease, transform 0.03s ease;
+}
+
+.formulario.ea-card input:focus,
+.formulario.ea-card select:focus {
+  border-color: var(--azul);
+  box-shadow: 0 0 0 3px rgba(0, 51, 160, 0.15);
+}
+
+/* Botón */
+.ea-btn {
+  border-radius: 999px;
+  padding: 10px 20px;
+  margin-top: 14px;
+  align-self: flex-end;
+  font-weight: 800;
+  font-size: 0.95rem;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: filter 0.2s ease, transform 0.04s ease, box-shadow 0.2s ease;
+}
+
+.ea-btn.primary {
+  color: #ffffff;
+  background: linear-gradient(135deg, var(--guinda), var(--guinda-2));
+  box-shadow: 0 10px 18px rgba(110, 0, 40, 0.18);
+}
+
+.ea-btn.primary:hover {
+  filter: saturate(1.05) brightness(1.03);
+}
+
+.ea-btn.primary:active {
+  transform: translateY(1px);
+}
+
+/* Previsualización de foto */
+.ea-photo-preview {
+  margin: 8px 0 4px;
+}
+
+.ea-photo-preview img {
+  max-width: 220px;
+  border-radius: 8px;
+  border: 1px solid var(--borde);
+  display: block;
+}
+
+/* Responsivo */
+@media (max-width: 640px) {
+  .ea-wrap {
+    padding-inline: 14px;
+  }
+  .ea-title {
+    font-size: 1.6rem;
+  }
+  .ea-card {
+    padding: 16px 14px 18px;
+  }
+}

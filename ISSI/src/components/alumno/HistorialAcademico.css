@@ -1,0 +1,124 @@
+:root {
+  --guinda: #6e0028;
+  --guinda-2: #8b0e39;
+  --azul: #0033a0;
+  --azul-10: #e6eeff;
+  --borde: #e5e7eb;
+  --bg: #ffffff;
+  --ink: #0f172a;
+  --muted: #6b7280;
+
+  --radius-lg: 18px;
+  --radius-md: 12px;
+  --shadow-md: 0 10px 24px rgba(15, 23, 42, 0.12);
+}
+
+/* Contenedor general */
+.ha-wrap {
+  max-width: 1100px;
+  margin: 32px auto 40px;
+  padding: 0 20px 32px;
+  background: var(--bg);
+  color: var(--ink);
+  box-sizing: border-box;
+}
+
+/* Título principal */
+.ha-title {
+  margin: 0 0 16px;
+  font-size: 1.9rem;
+  font-weight: 800;
+  color: var(--guinda);
+  border-bottom: 3px solid var(--guinda);
+  display: inline-block;
+  padding-bottom: 4px;
+}
+
+/* Tarjeta por semestre */
+.ha-card {
+  margin-bottom: 18px;
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--borde);
+  padding: 18px 18px 20px;
+  box-shadow: var(--shadow-md);
+}
+
+/* Título de semestre */
+.ha-sem-title {
+  margin: 0 0 10px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--guinda);
+}
+
+/* Tabla */
+.ha-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  background: #ffffff;
+}
+
+.ha-table thead {
+  background: linear-gradient(135deg, var(--guinda), var(--guinda-2));
+}
+
+.ha-table thead th {
+  color: #ffffff;
+  text-align: left;
+  padding: 8px 10px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.ha-table tbody td {
+  padding: 8px 10px;
+  border-top: 1px solid var(--borde);
+}
+
+.ha-table tbody tr:nth-child(even) {
+  background: #fafafa;
+}
+
+.ha-table tbody tr:hover {
+  background: #f3f4ff;
+}
+
+/* Mensaje cuando no hay registros */
+.ha-empty {
+  margin-top: 20px;
+  text-align: center;
+  color: var(--muted);
+  font-style: italic;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .ha-wrap {
+    padding-inline: 14px;
+  }
+
+  .ha-title {
+    font-size: 1.6rem;
+  }
+
+  .ha-card {
+    padding: 14px 12px 16px;
+  }
+
+  .ha-table thead th,
+  .ha-table tbody td {
+    padding: 6px 8px;
+  }
+}
+
+.historial-semestre {
+  margin-bottom: 40px;
+  padding-bottom: 20px;
+  overflow-x: auto; /* Scroll horizontal para la tabla */
+}
+
+.historial-semestre h3 {
+  margin-bottom: 10px;
+}

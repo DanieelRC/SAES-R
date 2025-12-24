@@ -1,0 +1,429 @@
+/* =======================================
+   Variables generales
+======================================= */
+:root {
+  --prof-guinda: #7d0024;
+  --prof-guinda-dark: #60001c;
+  --prof-text: #222222;
+  --prof-muted: #6b7280;
+  --prof-bg: #f9f9fb;
+  --prof-border: #e5e7eb;
+  --prof-rosa-activo: #fde7ef;
+}
+
+/* =======================================
+   Layout general profesor
+======================================= */
+.profesor-layout {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  background: #f5f5f5; /* opcional */
+}
+
+/* Sidebar (igual estilo que el alumno) */
+.profesor-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 240px;
+  height: 100vh;
+  background: #ffffff;
+  padding: 20px 20px 16px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.08);
+  z-index: 20;
+  box-sizing: border-box;
+}
+
+/* Logo IPN + texto Gestión Escolar */
+.profesor-logo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 1.6rem;
+}
+
+.profesor-logo-img {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+}
+
+.profesor-logo-text {
+  display: flex;
+  flex-direction: column;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #333333;
+}
+
+/* Línea separadora bajo el logo */
+.profesor-sidebar-separator {
+  height: 1px;
+  background-color: #f2f2f2;
+  margin-bottom: 1rem;
+}
+
+/* Menú lateral */
+.profesor-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  flex: 1;
+}
+
+.profesor-menu-item {
+  display: block;
+  text-decoration: none;
+  font-size: 0.9rem;
+  color: #444444;
+  padding: 0.55rem 0.9rem;
+  border-radius: 8px;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    font-weight 0.2s ease;
+}
+
+.profesor-menu-item:hover {
+  background-color: #f5f0f5;
+}
+
+.profesor-menu-item.active {
+  background-color: var(--prof-rosa-activo);
+  color: var(--prof-guinda);
+  font-weight: 600;
+}
+
+/* Botón "Cerrar sesión" */
+.profesor-logout {
+  margin-top: auto;
+  border: none;
+  background: none;
+  color: var(--prof-guinda);
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding-top: 1rem;
+}
+
+/* =======================================
+   Contenido principal
+======================================= */
+.profesor-main {
+  flex: 1 !important;                /* QUE TOME TODO EL ESPACIO DISPONIBLE */
+  width: 100% !important;            /* EVITA RECORTES */
+  padding: 2rem;                     /* opcional */
+  box-sizing: border-box;            /* IMPORTANTÍSIMO */
+  overflow-x: visible !important;    /* evita cortes horizontales */
+}
+
+
+.profesor-main-inner {
+  width: 100% !important;            /* SIN ESTO SE HACEN RECORTES */
+  max-width: 100% !important;        /* EVITA QUE SE ENCOJA */
+  overflow-x: visible !important;
+}
+
+/* =======================================
+   ENCABEZADO DE PÁGINA (título + ESCOM)
+======================================= */
+.prof-page-header {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  padding: 1.1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.8rem;
+}
+
+.prof-page-title {
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  color: var(--prof-text);
+}
+
+.prof-page-header-right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.9rem;
+  color: var(--prof-muted);
+}
+
+.prof-page-escom-logo {
+  height: 50px;
+}
+
+/* =======================================
+   Dashboard del profesor (Profesor.jsx)
+======================================= */
+.profesor-dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+}
+
+/* Tarjeta de bienvenida */
+.profesor-welcome-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1.6rem 2rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.profesor-welcome-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.profesor-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: var(--prof-rosa-activo);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--prof-guinda);
+  font-weight: 700;
+  font-size: 1.3rem;
+}
+
+.profesor-welcome-texts {
+  display: flex;
+  flex-direction: column;
+}
+
+.profesor-welcome-title {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--prof-text);
+}
+
+.profesor-welcome-title span {
+  color: var(--prof-guinda);
+}
+
+.profesor-welcome-sub {
+  margin: 0.25rem 0 0;
+  font-size: 0.9rem;
+  color: var(--prof-muted);
+}
+
+/* Stats */
+.profesor-stats-grid {
+  margin-top: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.profesor-stat-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1rem 1.3rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  border: 1px solid #f0eef5;
+}
+
+.profesor-stat-label {
+  font-size: 0.85rem;
+  color: var(--prof-muted);
+  margin-bottom: 0.25rem;
+}
+
+.profesor-stat-value {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--prof-guinda);
+}
+
+/* Grupos recientes / tabla */
+.profesor-recent-groups {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  padding: 1.6rem 2rem;
+  margin-top: 1.5rem;
+}
+
+.profesor-recent-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.8rem;
+}
+
+.profesor-recent-header h2 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--prof-text);
+}
+
+.profesor-badge {
+  display: inline-block;
+  background-color: var(--prof-rosa-activo);
+  color: var(--prof-guinda);
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.15rem 0.55rem;
+}
+
+.profesor-recent-table-wrapper {
+  margin-top: 0.5rem;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.profesor-recent-groups table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.profesor-recent-groups th,
+.profesor-recent-groups td {
+  padding: 8px 10px;
+  border-bottom: 1px solid #f1f1f4;
+  text-align: left;
+}
+
+.profesor-recent-groups th {
+  background-color: #fafafa;
+  font-weight: 600;
+  color: #4b5563;
+}
+
+/* Botón principal inferior (Ver grupos asignados) */
+.profesor-actions {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.profesor-main-cta {
+  display: inline-block;
+  padding: 0.7rem 1.6rem;
+  border-radius: 8px;
+  background-color: var(--prof-guinda);
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    transform 0.05s ease,
+    box-shadow 0.15s ease;
+}
+
+.profesor-main-cta:hover {
+  background-color: var(--prof-guinda-dark);
+  box-shadow: 0 6px 16px rgba(125, 0, 36, 0.4);
+  transform: translateY(-1px);
+}
+
+/* =======================================
+   Responsive
+======================================= */
+@media (max-width: 900px) {
+  .profesor-main {
+    padding: 1.8rem 1.5rem;
+  }
+
+  .profesor-welcome-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 768px) {
+  .profesor-layout {
+    flex-direction: column;
+  }
+
+  .profesor-sidebar {
+    position: static;
+    width: 100%;
+    height: auto;
+    box-shadow: none;
+    border-bottom: 1px solid #f0f0f0;
+    flex-direction: row;
+    align-items: center;
+    padding: 12px 16px;
+  }
+
+  .profesor-logo {
+    margin-bottom: 0;
+  }
+
+  .profesor-sidebar-separator {
+    display: none;
+  }
+
+  .profesor-menu {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-left: auto;
+  }
+
+  .profesor-logout {
+    margin-top: 0;
+    padding-top: 0;
+    margin-left: 1rem;
+  }
+
+  .profesor-main {
+    margin-left: 0;
+    width: 100%;
+    padding: 1.5rem;
+  }
+
+  .prof-page-escom-logo {
+    height: 44px;
+  }
+}
+
+@media (max-width: 480px) {
+  .profesor-logo-img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .profesor-logo-text {
+    font-size: 0.95rem;
+  }
+
+  .profesor-main {
+    padding: 1.2rem;
+  }
+
+  .profesor-main-cta {
+    width: 100%;
+    text-align: center;
+  }
+
+  .prof-page-header {
+    padding-inline: 1.2rem;
+  }
+
+  .prof-page-title {
+    font-size: 1.4rem;
+  }
+}

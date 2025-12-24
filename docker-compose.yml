@@ -1,0 +1,100 @@
+version: '3.8'
+
+services:
+  # ==========================================
+  # 1. BASE DE DATOS (MySQL)
+  # ==========================================
+  mysql_db:
+    image: mysql:8.0
+    container_name: saes_mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: SAES
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      # Tu carpeta de scripts SQL
+      - ./ISSI/BD:/docker-entrypoint-initdb.d
+    networks:
+      - app-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-proot"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ==========================================
+  # 2. BACKEND (NodeJS)
+  # ==========================================
+  backend:
+    container_name: saes_backend
+    build: 
+      # CAMBIO CRÍTICO 1: El contexto sube un nivel, a la carpeta ISSI raíz
+      context: ./ISSI
+      # CAMBIO CRÍTICO 2: Le decimos específicamente dónde está el Dockerfile
+      dockerfile: server/Dockerfile
+    restart: always
+    environment:
+      - PORT=3001
+      - DB_HOST=mysql_db
+      - DB_USER=root
+      - DB_PASS=root
+      - DB_NAME=SAES
+      - LLM_API_URL=http://fastapi_llm:8000
+    ports:
+      - "3001:3001"
+    depends_on:
+      mysql_db:
+        condition: service_healthy
+    networks:
+      - app-network
+
+  # ==========================================
+  # 3. INTELIGENCIA ARTIFICIAL (Python + Llama 3.1)
+  # ==========================================
+  fastapi_llm:
+    container_name: saes_ai
+    build: ./agenteSAES_phi
+    restart: always
+    environment:
+      - LLM_MODEL_PATH=/app/models/Meta-Llama-3.1-8B-Instruct-Q4_K_M.gguf
+    volumes:
+      - ./agenteSAES_phi/models:/app/models
+    ports:
+      - "8000:8000"
+    networks:
+      - app-network
+    
+    # --- AGREGA ESTO ---
+    # Esto sobrescribe el CMD del Dockerfile. 
+    # Primero descarga el modelo, y LUEGO arranca el servidor.
+    command: >
+      sh -c "pip install mysql-connector-python && 
+             python -m spacy download es_core_news_sm && 
+             uvicorn main:app --host 0.0.0.0 --port 8000"
+    # -------------------
+
+  # ==========================================
+  # 4. FRONTEND (React + Nginx)
+  # ==========================================
+  frontend:
+    container_name: saes_frontend
+    build: 
+      context: ./ISSI     # Raíz del repo ISSI
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - app-network
+
+volumes:
+  mysql_data:
+
+networks:
+  app-network:
+    driver: bridge

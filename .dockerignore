@@ -1,0 +1,17 @@
+.git
+.gitignore
+.dockerignore
+.venv
+__pycache__
+.vscode
+.idea
+*.pyc
+*.pyo
+*.pyd
+
+# Node
+node_modules
+npm-debug.log
+yarn-error.log
+coverage
+build

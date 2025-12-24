@@ -1,0 +1,232 @@
+:root {
+  --guinda: #6e0028;
+  --guinda-2: #8b0e39;
+  --azul: #0033a0;
+  --azul-10: #e6eeff;
+  --borde: #e5e7eb;
+  --bg: #ffffff;
+  --ink: #0f172a;
+  --muted: #6b7280;
+
+  --radius-lg: 18px;
+  --radius-md: 12px;
+  --shadow-md: 0 10px 24px rgba(15, 23, 42, 0.12);
+}
+
+.ep-layout {
+  display: flex;
+  height: 100vh;
+}
+
+.ep-main-content {
+  overflow-y: auto;
+  flex: 1;
+  margin-left: 320px;
+}
+
+/* Contenedor general */
+.ep-wrap {
+  max-width: 1100px;
+  margin: 32px auto 40px;
+  padding: 0 20px 32px;
+  background: var(--bg);
+  color: var(--ink);
+  box-sizing: border-box;
+}
+
+/* Título principal */
+.ep-title {
+  margin: 0 0 16px;
+  font-size: 1.9rem;
+  font-weight: 800;
+  color: var(--guinda);
+  border-bottom: 3px solid var(--guinda);
+  display: inline-block;
+  padding-bottom: 4px;
+}
+
+/* Tarjeta del formulario */
+.ep-card {
+  margin-top: 12px;
+  background: #ffffff;
+  border: 1px solid var(--borde);
+  border-radius: var(--radius-lg);
+  padding: 20px 20px 22px;
+  box-shadow: var(--shadow-md);
+}
+
+/* Formulario general */
+.formulario.ep-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Etiquetas */
+.formulario.ep-card label {
+  font-weight: 700;
+  color: #111827;
+  margin: 4px 0 4px;
+}
+
+/* Inputs y selects */
+.formulario.ep-card input,
+.formulario.ep-card select {
+  border: 1px solid var(--borde);
+  border-radius: var(--radius-md);
+  padding: 9px 11px;
+  outline: none;
+  font-size: 0.95rem;
+  background: #ffffff;
+  transition: border 0.2s ease, box-shadow 0.2s ease, transform 0.03s ease;
+}
+
+.formulario.ep-card input:focus,
+.formulario.ep-card select:focus {
+  border-color: var(--azul);
+  box-shadow: 0 0 0 3px rgba(0, 51, 160, 0.15);
+}
+
+/* Botón */
+.ep-btn {
+  border-radius: 999px;
+  padding: 10px 20px;
+  margin-top: 14px;
+  align-self: flex-end;
+  font-weight: 800;
+  font-size: 0.95rem;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: filter 0.2s ease, transform 0.04s ease, box-shadow 0.2s ease;
+}
+
+.ep-btn.primary {
+  color: #ffffff;
+  background: linear-gradient(135deg, var(--guinda), var(--guinda-2));
+  box-shadow: 0 10px 18px rgba(110, 0, 40, 0.18);
+}
+
+.ep-btn.primary:hover {
+  filter: saturate(1.05) brightness(1.03);
+}
+
+.ep-btn.primary:active {
+  transform: translateY(1px);
+}
+
+.acciones .btn.rojo {
+  background-color: #dc2626;
+  color: white;
+}
+
+.acciones .btn.rojo:hover {
+  background-color: #b91c1c;
+}
+
+/* Previsualización de foto */
+.ep-photo-preview {
+  margin: 8px 0 4px;
+}
+
+.ep-photo-preview img {
+  max-width: 220px;
+  border-radius: 8px;
+  border: 1px solid var(--borde);
+  display: block;
+}
+
+/* Responsivo */
+@media (max-width: 640px) {
+  .ep-wrap {
+    padding-inline: 14px;
+  }
+
+  .ep-title {
+    font-size: 1.6rem;
+  }
+
+  .ep-card {
+    padding: 16px 14px 18px;
+  }
+}
+
+/* Modal Styles */
+.ep-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+}
+
+.ep-modal-content {
+  background: white;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  width: 90%;
+  max-width: 450px;
+  max-width: 450px;
+  text-align: center;
+  position: relative;
+  z-index: 100000;
+}
+
+.ep-modal-content h2 {
+  margin-top: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.ep-modal-content p {
+  margin: 8px 0 24px;
+  color: #4b5563;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.modal-actions .btn {
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  border: 1px solid transparent;
+}
+
+.modal-actions .btn.rojo {
+  background-color: #dc2626;
+  color: white;
+}
+
+.modal-actions .btn.rojo:hover {
+  background-color: #b91c1c;
+}
+
+.modal-actions .btn.blanco {
+  background-color: #f9fafb;
+  color: #374151;
+  border-color: #d1d5db;
+}
+
+.modal-actions .btn.blanco:hover {
+  background-color: #f3f4f6;
+}
+/* Responsive */
+@media (max-width: 768px) {
+  .ep-main-content {
+    margin-left: 0;
+  }
+  
+  .ep-wrap {
+    padding: 15px;
+  }
+}

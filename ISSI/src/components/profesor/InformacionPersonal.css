@@ -1,0 +1,175 @@
+.info-personal-page {
+  width: 100%;
+  padding: 2rem 3rem;
+  box-sizing: border-box;
+  background-color: #f5f5f7;
+  min-height: 100vh;
+}
+
+.info-personal-header {
+  margin-bottom: 1rem;
+}
+
+.info-personal-header h1 {
+  font-size: 1.9rem;
+  font-weight: 600;
+  color: #333333;
+}
+
+.info-personal-subtitle {
+  font-size: 0.95rem;
+  color: #666666;
+  margin-top: 0.25rem;
+}
+
+/* Tarjetas */
+.section-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 1.75rem 2rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.04);
+  border: 1px solid #eeeeee;
+}
+
+.section-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+  color: #444444;
+}
+
+/* Grid de campos */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #555555;
+  margin-bottom: 0.3rem;
+}
+
+/* Inputs / select */
+.form-group input,
+.form-group select {
+  font-size: 0.9rem;
+  padding: 0.55rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #d5d5d5;
+  background-color: #fafafa;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.form-group input::placeholder {
+  color: #b8b8b8;
+}
+
+.form-group input[readonly],
+.form-group select:disabled {
+  color: #555555;
+  cursor: default;
+}
+
+/* Cuando está editando y se enfoca un campo */
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #800020; /* guinda */
+  box-shadow: 0 0 0 2px rgba(128, 0, 32, 0.12);
+  background-color: #ffffff;
+}
+
+/* Vista previa de foto opcional */
+.info-personal-foto-preview {
+  margin-top: 0.5rem;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 999px;
+  border: 1px solid #ddd;
+}
+
+/* Botones */
+.info-personal-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0.75rem;
+  gap: 0.75rem;
+}
+
+.btn-guardar-info {
+  padding: 0.6rem 1.8rem;
+  border-radius: 999px;
+  border: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: #800020;
+  color: #ffffff;
+  letter-spacing: 0.02em;
+  box-shadow: 0 8px 18px rgba(128, 0, 32, 0.25);
+  transition: transform 0.15s ease, box-shadow 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.btn-guardar-info:hover {
+  background-color: #a0002a;
+  transform: translateY(-1px);
+  box-shadow: 0 12px 22px rgba(128, 0, 32, 0.35);
+}
+
+.btn-guardar-info:active {
+  transform: translateY(0);
+  box-shadow: 0 6px 12px rgba(128, 0, 32, 0.25);
+}
+
+.btn-cancelar-info {
+  padding: 0.6rem 1.8rem;
+  border-radius: 999px;
+  border: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: #bbbbbb;
+  color: #ffffff;
+  transition: 0.15s ease;
+}
+
+.btn-cancelar-info:hover {
+  background-color: #9f9f9f;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .info-personal-page {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .info-personal-page {
+    padding: 1.25rem 1rem;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-card {
+    padding: 1.25rem 1.1rem;
+  }
+
+  .info-personal-header h1 {
+    font-size: 1.6rem;
+  }
+}

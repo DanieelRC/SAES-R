@@ -1,0 +1,453 @@
+/* ETS.css - Estilos para el módulo de Evaluación de ETS para Profesores */
+
+:root {
+  --ets-guinda: #7d0024;
+  --ets-guinda-dark: #60001c;
+  --ets-border: #e5e7eb;
+  --ets-text: #222222;
+  --ets-bg: #f3f4f6;
+}
+
+.profesor-container {
+  display: flex;
+  min-height: 100vh;
+  background: var(--ets-bg);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.main-content {
+  flex: 1;
+  padding: 2rem 2.5rem;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+/* ================= HEADER ================= */
+
+.ets-header {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  padding: 1.8rem 2rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--ets-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.encabezado-section h1 {
+  margin: 0 0 0.4rem;
+  color: var(--ets-text);
+  font-size: 1.7rem;
+  font-weight: 800;
+}
+
+.ets-header p {
+  margin: 0;
+  color: #6b7280;
+  font-size: 0.95rem;
+}
+
+.header-logo {
+  width: 80px;
+  height: auto;
+}
+
+/* ================= LOADING ================= */
+
+.loading-message {
+  text-align: center;
+  padding: 3rem;
+  font-size: 1.1rem;
+  color: #6b7280;
+}
+
+/* ================= MENSAJE NO DISPONIBLE ================= */
+
+.mensaje-no-disponible {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 350px;
+}
+
+.mensaje-card {
+  background-color: #ffffff;
+  padding: 2rem 2.3rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  max-width: 540px;
+  border: 1px solid var(--ets-border);
+}
+
+.mensaje-card h3 {
+  color: var(--ets-guinda);
+  font-size: 1.25rem;
+  margin-bottom: 0.8rem;
+}
+
+.mensaje-card p {
+  color: #4b5563;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* ================= LISTA DE GRUPOS ETS ================= */
+
+.lista-grupos-ets {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  padding: 1.8rem 2rem 2.2rem;
+  border: 1px solid var(--ets-border);
+}
+
+.lista-header {
+  margin-bottom: 1.5rem;
+  text-align: center;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--ets-border);
+}
+
+.lista-header h2 {
+  margin: 0 0 0.4rem;
+  color: var(--ets-guinda);
+  font-size: 1.7rem;
+  font-weight: 800;
+}
+
+.lista-header p {
+  margin: 0;
+  color: #6b7280;
+  font-size: 0.95rem;
+}
+
+.sin-grupos {
+  text-align: center;
+  padding: 3rem;
+  color: #6b7280;
+  font-style: italic;
+}
+
+.tabla-container {
+  overflow-x: auto;
+  margin-bottom: 1.5rem;
+}
+
+.tabla-grupos-ets {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #ffffff;
+}
+
+.tabla-grupos-ets thead {
+  background: linear-gradient(135deg, var(--ets-guinda) 0%, var(--ets-guinda-dark) 100%);
+  color: #ffffff;
+}
+
+.tabla-grupos-ets thead th {
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.tabla-grupos-ets thead th:first-child {
+  border-radius: 8px 0 0 0;
+  text-align: center;
+  width: 60px;
+}
+
+.tabla-grupos-ets thead th:last-child {
+  border-radius: 0 8px 0 0;
+  text-align: center;
+  width: 150px;
+}
+
+.tabla-grupos-ets tbody tr {
+  border-bottom: 1px solid var(--ets-border);
+  transition: background-color 0.15s ease;
+}
+
+.tabla-grupos-ets tbody tr:hover {
+  background-color: #fef2f5;
+}
+
+.tabla-grupos-ets tbody tr:last-child {
+  border-bottom: none;
+}
+
+.tabla-grupos-ets tbody td {
+  padding: 1rem;
+  font-size: 0.95rem;
+  color: #374151;
+}
+
+.tabla-grupos-ets tbody td:first-child {
+  text-align: center;
+  font-weight: 600;
+  color: var(--ets-guinda);
+}
+
+.tabla-grupos-ets tbody td:last-child {
+  text-align: center;
+}
+
+.nombre-ua {
+  font-weight: 500;
+  color: var(--ets-text);
+}
+
+/* ================= EVALUACIÓN ETS ================= */
+
+.evaluacion-ets {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  padding: 1.8rem 2rem 2.2rem;
+  border: 1px solid var(--ets-border);
+}
+
+.grupo-evaluando {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--ets-border);
+}
+
+.grupo-evaluando h2 {
+  margin: 0 0 0.3rem;
+  color: var(--ets-guinda);
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.info-grupo {
+  margin: 0;
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+.sin-alumnos {
+  text-align: center;
+  padding: 3rem;
+  color: #6b7280;
+  font-style: italic;
+}
+
+/* ================= TABLA ALUMNOS ETS ================= */
+
+.tabla-alumnos-ets {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #ffffff;
+}
+
+.tabla-alumnos-ets thead {
+  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+  color: #ffffff;
+}
+
+.tabla-alumnos-ets thead th {
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.tabla-alumnos-ets thead th:first-child {
+  border-radius: 8px 0 0 0;
+  text-align: center;
+  width: 60px;
+}
+
+.tabla-alumnos-ets thead th:last-child {
+  border-radius: 0 8px 0 0;
+  text-align: center;
+  width: 180px;
+}
+
+.tabla-alumnos-ets tbody tr {
+  border-bottom: 1px solid var(--ets-border);
+  transition: background-color 0.15s ease;
+}
+
+.tabla-alumnos-ets tbody tr:hover {
+  background-color: #eff6ff;
+}
+
+.tabla-alumnos-ets tbody tr:last-child {
+  border-bottom: none;
+}
+
+.tabla-alumnos-ets tbody td {
+  padding: 1rem;
+  font-size: 0.95rem;
+  color: #374151;
+}
+
+.tabla-alumnos-ets tbody td:first-child {
+  text-align: center;
+  font-weight: 600;
+  color: #2563eb;
+}
+
+.tabla-alumnos-ets tbody td:last-child {
+  text-align: center;
+}
+
+.nombre-alumno {
+  font-weight: 500;
+  color: var(--ets-text);
+}
+
+.input-calificacion {
+  width: 100%;
+  max-width: 120px;
+  padding: 0.5rem 0.8rem;
+  border: 1px solid var(--ets-border);
+  border-radius: 6px;
+  font-size: 0.95rem;
+  text-align: center;
+  transition: border-color 0.2s ease, box-shadow 0.15s ease;
+}
+
+.input-calificacion:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* ================= BOTONES ================= */
+
+.botones-container {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.btn-evaluar,
+.btn-guardar,
+.btn-volver,
+.btn-cancelar,
+.btn-volver-lista {
+  padding: 0.6rem 1.5rem;
+  border: none;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn-evaluar {
+  background: linear-gradient(135deg, var(--ets-guinda) 0%, var(--ets-guinda-dark) 100%);
+  color: #ffffff;
+  box-shadow: 0 2px 6px rgba(125, 0, 36, 0.25);
+}
+
+.btn-evaluar:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(125, 0, 36, 0.35);
+}
+
+.btn-guardar {
+  background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+  color: #ffffff;
+  box-shadow: 0 2px 6px rgba(22, 163, 74, 0.25);
+}
+
+.btn-guardar:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(22, 163, 74, 0.35);
+}
+
+.btn-volver,
+.btn-cancelar {
+  background-color: #6b7280;
+  color: #ffffff;
+  box-shadow: 0 2px 6px rgba(107, 114, 128, 0.25);
+}
+
+.btn-volver:hover,
+.btn-cancelar:hover {
+  background-color: #4b5563;
+  transform: translateY(-2px);
+}
+
+.btn-volver-lista {
+  background-color: #6b7280;
+  color: #ffffff;
+  padding: 0.5rem 1.2rem;
+}
+
+.btn-volver-lista:hover {
+  background-color: #4b5563;
+  transform: translateX(-2px);
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 900px) {
+  .main-content {
+    padding: 1.6rem 1.4rem;
+  }
+
+  .ets-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .grupo-evaluando {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+
+  .btn-volver-lista {
+    align-self: flex-end;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 0;
+  }
+
+  .tabla-grupos-ets thead th,
+  .tabla-grupos-ets tbody td,
+  .tabla-alumnos-ets thead th,
+  .tabla-alumnos-ets tbody td {
+    padding: 0.7rem 0.5rem;
+    font-size: 0.85rem;
+  }
+
+  .btn-evaluar,
+  .btn-guardar,
+  .btn-volver,
+  .btn-cancelar {
+    padding: 0.5rem 1.2rem;
+    font-size: 0.85rem;
+  }
+
+  .botones-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .botones-container button {
+    width: 100%;
+    max-width: 280px;
+  }
+}

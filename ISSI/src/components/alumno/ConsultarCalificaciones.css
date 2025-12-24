@@ -1,0 +1,125 @@
+/* Página general */
+.consultar-calificaciones-page {
+  padding: 24px 32px;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  background: #f5f5f7;
+  display: flex;
+  justify-content: center;
+}
+
+/* Tarjeta principal */
+.consultar-calificaciones-card {
+  width: 100%;
+  max-width: 1100px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+  padding: 24px 28px 28px;
+  box-sizing: border-box;
+}
+
+/* Header */
+.consultar-calificaciones-header {
+  margin-bottom: 18px;
+}
+
+.consultar-calificaciones-title {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #701a1a; /* guinda ESCOM */
+}
+
+.consultar-calificaciones-subtitle {
+  margin-top: 6px;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+/* Estados (cargando, error, vacío) */
+.consultar-calificaciones-estado {
+  margin-top: 12px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: #f7f3f6;
+  color: #4b4b4b;
+  font-size: 0.95rem;
+}
+
+.consultar-calificaciones-error {
+  border-left: 4px solid #b3261e;
+  background: #fdecec;
+  color: #8b1e1e;
+}
+
+/* Contenedor para scroll horizontal en pantallas pequeñas */
+.consultar-calificaciones-table-wrapper {
+  margin-top: 12px;
+  overflow-x: auto;
+}
+
+/* Tabla */
+.consultar-calificaciones-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 800px;
+  font-size: 0.9rem;
+}
+
+.consultar-calificaciones-table thead tr {
+  background: #701a1a; /* guinda */
+}
+
+.consultar-calificaciones-table th,
+.consultar-calificaciones-table td {
+  padding: 10px 12px;
+  text-align: center;
+  border-bottom: 1px solid #e1e1e1;
+}
+
+.consultar-calificaciones-table th {
+  color: #ffffff;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  font-size: 0.8rem;
+}
+
+/* Filas */
+.consultar-calificaciones-table tbody tr:nth-child(even) {
+  background-color: #faf5f8;
+}
+
+.consultar-calificaciones-table tbody tr:nth-child(odd) {
+  background-color: #ffffff;
+}
+
+.consultar-calificaciones-table tbody tr:hover {
+  background-color: #f0e4ec;
+  transition: background-color 0.2s ease;
+}
+
+/* Celda cuando no hay datos */
+.consultar-calificaciones-empty {
+  text-align: center;
+  padding: 14px 10px;
+  font-size: 0.95rem;
+  color: #777;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .consultar-calificaciones-page {
+    padding: 16px;
+  }
+
+  .consultar-calificaciones-card {
+    padding: 18px 16px 20px;
+  }
+
+  .consultar-calificaciones-title {
+    font-size: 1.3rem;
+  }
+}

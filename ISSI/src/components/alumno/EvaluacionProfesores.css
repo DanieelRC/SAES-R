@@ -1,0 +1,880 @@
+/* EvaluacionProfesores.css */
+/* Paleta tipo SAES-R */
+:root {
+  --eval-guinda: #7d0024;
+  --eval-guinda-dark: #60001c;
+  --eval-border: #e5e7eb;
+  --eval-text: #222222;
+  --eval-bg: #f3f4f6;
+}
+
+/* Layout general */
+.evaluacion-container {
+  display: flex;
+  min-height: 100vh;
+  background: var(--eval-bg);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* ================= SIDEBAR ================= */
+
+.sidebar {
+  width: 240px;
+  background-color: #ffffff;          /* Fondo blanco */
+  color: #4b5563;                     /* Texto gris oscuro */
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  box-shadow: none;
+  border-right: 1px solid #e5e7eb;    /* Línea divisoria ligera */
+  box-sizing: border-box;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 30px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #7d0024;                     /* Guinda para el texto */
+}
+
+.logo-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex-grow: 1;
+}
+
+.menu-item {
+  background-color: transparent;
+  border: none;
+  color: #4b5563;
+  padding: 8px 10px;
+  text-align: left;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.15s ease, color 0.15s ease,
+    transform 0.05s ease;
+  font-size: 0.9rem;
+}
+
+.menu-item:hover {
+  background-color: #f3f4f6;
+  transform: translateX(1px);
+}
+
+/* Ítem activo: rosita + guinda */
+.menu-item.active {
+  background-color: #ffe4ec;
+  color: #7d0024;
+  font-weight: 600;
+}
+
+.logout {
+  background-color: transparent;
+  border: none;
+  color: #dc2626;
+  padding: 10px 0;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: color 0.15s ease;
+  margin-top: 1.5rem;
+}
+
+.logout:hover {
+  color: #b91c1c;
+}
+
+/* =============== CONTENIDO PRINCIPAL =============== */
+
+.main-content {
+  flex: 1;
+  padding: 2rem 2.5rem;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+/* Tarjeta de encabezado */
+.evaluacion-header {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  padding: 1.8rem 2rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--eval-border);
+}
+
+.evaluacion-header h2 {
+  margin: 0 0 0.4rem;
+  color: var(--eval-text);
+  font-size: 1.7rem;
+  font-weight: 800;
+}
+
+.evaluacion-header p {
+  margin: 0;
+  color: #6b7280;
+  font-size: 0.95rem;
+}
+
+/* Formulario de evaluación */
+.formulario-evaluacion {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  padding: 1.8rem 2rem 2.2rem;
+  border: 1px solid var(--eval-border);
+}
+
+/* ========== MENSAJE CUANDO NO ES FECHA VÁLIDA ========== */
+
+.mensaje-no-disponible {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 350px;
+}
+
+.mensaje-card {
+  background-color: #ffffff;
+  padding: 2rem 2.3rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  max-width: 540px;
+  border: 1px solid var(--eval-border);
+}
+
+.mensaje-card h3 {
+  color: var(--eval-guinda);
+  font-size: 1.25rem;
+  margin-bottom: 0.8rem;
+}
+
+.mensaje-card p {
+  color: #4b5563;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* =============== SELECTOR DE PROFESOR =============== */
+
+.selector-profesor {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.2rem;
+  border-bottom: 1px solid var(--eval-border);
+}
+
+.selector-profesor label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: var(--eval-text);
+  font-size: 0.98rem;
+}
+
+.select-profesor {
+  width: 100%;
+  padding: 0.6rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid var(--eval-border);
+  font-size: 0.95rem;
+  background-color: #ffffff;
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.15s ease;
+  outline: none;
+}
+
+.select-profesor:focus {
+  border-color: var(--eval-guinda);
+  box-shadow: 0 0 0 3px rgba(125, 0, 36, 0.15);
+}
+
+/* =================== PREGUNTAS =================== */
+
+.form-preguntas {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.pregunta-card {
+  background-color: #fafafa;
+  padding: 1rem 1.2rem;
+  border-radius: 12px;
+  border: 1px solid var(--eval-border);
+  border-left: 4px solid var(--eval-guinda);
+  transition: box-shadow 0.15s ease, transform 0.05s ease,
+    background-color 0.15s ease;
+}
+
+.pregunta-card:hover {
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transform: translateY(-1px);
+}
+
+.pregunta-texto {
+  margin: 0 0 0.8rem;
+  color: var(--eval-text);
+  font-size: 0.98rem;
+  font-weight: 600;
+}
+
+.opciones-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.opcion-label {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.55rem 0.8rem;
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background-color 0.15s ease,
+    box-shadow 0.1s ease;
+}
+
+.opcion-label:hover {
+  border-color: var(--eval-guinda);
+  background-color: #fef2f5;
+  box-shadow: 0 1px 4px rgba(125, 0, 36, 0.12);
+}
+
+.opcion-label input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: var(--eval-guinda);
+}
+
+.opcion-label input[type="radio"]:checked + .opcion-texto {
+  font-weight: 600;
+  color: var(--eval-guinda);
+}
+
+.opcion-texto {
+  font-size: 0.9rem;
+  color: #374151;
+}
+
+/* Comentario libre */
+.comentario-section {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.comentario-label {
+  display: block;
+  font-weight: 600;
+  color: var(--eval-text);
+  font-size: 0.98rem;
+}
+
+.comentario-input {
+  width: 100%;
+  padding: 1rem 1.2rem;
+  border-radius: 12px;
+  border: 1px solid var(--eval-border);
+  border-left: 4px solid var(--eval-guinda);
+  min-height: 120px;
+  resize: vertical;
+  font-size: 0.95rem;
+  color: #374151;
+  background-color: #fafafa;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  box-sizing: border-box;
+  transition: background-color 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.comentario-input:hover {
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.comentario-input:focus {
+  outline: none;
+  background-color: #ffffff;
+  border-color: var(--eval-guinda);
+  box-shadow: 0 0 0 3px rgba(125, 0, 36, 0.1), 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+/* =================== BOTONES FORM =================== */
+
+.botones-container {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.seccion-botones {
+ display: block;
+}
+
+/* Base para TODOS los botones de acción */
+/* Base para TODOS los botones de acción */
+.btn-enviar,
+.btn-cancelar,
+.btn-nueva,
+.btn-volver {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 180px;
+  width: auto;
+  height: auto;
+  min-height: 48px;
+  line-height: 1.2;
+  padding: 0.8rem 2rem;
+  margin: 0.5rem; /* Better spacing for responsiveness */
+
+  border: none;
+  border-radius: 999px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+/* Enviar */
+.btn-enviar {
+  background: var(--eval-guinda);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(125, 0, 36, 0.25);
+}
+
+.btn-enviar:hover {
+  background: var(--eval-guinda-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(125, 0, 36, 0.35);
+}
+
+/* Cancelar */
+.btn-cancelar {
+  background-color: #9ca3af;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(156, 163, 175, 0.25);
+}
+
+.btn-cancelar:hover {
+  background-color: #6b7280;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(107, 114, 128, 0.35);
+}
+
+/* Resultado */
+/* .btn-nueva y .btn-volver estan redefinidos mas abajo en la seccion de Result */
+
+/* =================== RESULTADO =================== */
+
+.resultado-evaluacion {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 420px;
+}
+
+.resultado-card {
+  background-color: #ffffff;
+  padding: 2rem 2.3rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  text-align: center;
+  max-width: 580px;
+  width: 100%;
+  border: 1px solid var(--eval-border);
+}
+
+.resultado-card h2 {
+  color: var(--eval-text);
+  margin-bottom: 1.2rem;
+  font-size: 1.6rem;
+  font-weight: 800;
+}
+
+.resultado-info {
+  margin-bottom: 1.5rem;
+}
+
+.resultado-info p {
+  margin: 0.3rem 0;
+  font-size: 0.95rem;
+  color: #374151;
+}
+
+/* Caja de puntuación */
+.puntuacion-box {
+  background: linear-gradient(
+    135deg,
+    var(--eval-guinda) 0%,
+    var(--eval-guinda-dark) 100%
+  );
+  padding: 1.2rem 1rem;
+  border-radius: 12px;
+  margin: 1rem 0 1.2rem;
+  color: #ffffff;
+}
+
+.puntuacion-label {
+  font-size: 0.95rem;
+  margin-bottom: 0.3rem;
+}
+
+.puntuacion-valor {
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin: 0.2rem 0 0.4rem;
+}
+
+.calificacion {
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  display: inline-block;
+  margin-top: 0.3rem;
+}
+
+.calificacion.excelente {
+  background-color: #16a34a;
+  color: #ffffff;
+}
+
+.calificacion.muy-bueno {
+  background-color: #22c55e;
+  color: #ffffff;
+}
+
+.calificacion.bueno {
+  background-color: #3b82f6;
+  color: #ffffff;
+}
+
+.calificacion.regular {
+  background-color: #f59e0b;
+  color: #111827;
+}
+
+.calificacion.deficiente {
+  background-color: #dc2626;
+  color: #ffffff;
+}
+
+.mensaje-agradecimiento {
+  font-style: italic;
+  color: #6b7280;
+  margin-top: 0.8rem;
+  line-height: 1.5;
+}
+
+/* Botones en el resultado */
+.botones-resultado {
+  display: flex;
+  gap: 0.9rem;
+  justify-content: center;
+  margin-top: 0.4rem;
+}
+
+/* Estilos específicos para btn-nueva / btn-volver */
+.btn-nueva {
+  background-color: var(--eval-guinda);
+  color: #ffffff;
+  box-shadow: 0 10px 22px rgba(125, 0, 36, 0.35);
+}
+
+.btn-nueva:hover {
+  background-color: var(--eval-guinda-dark);
+  transform: translateY(-1px);
+}
+
+.btn-volver {
+  background-color: #6b7280;
+  color: #ffffff;
+  box-shadow: 0 10px 22px rgba(75, 85, 99, 0.35);
+}
+
+.btn-volver:hover {
+  background-color: #4b5563;
+  transform: translateY(-1px);
+}
+
+/* =================== RESPONSIVE =================== */
+
+/* =================== LISTA DE PROFESORES (TABLA) =================== */
+
+.lista-profesores {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  padding: 1.8rem 2rem 2.2rem;
+  border: 1px solid var(--eval-border);
+}
+
+.lista-header {
+  margin-bottom: 1.5rem;
+  text-align: center;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--eval-border);
+}
+
+.lista-header h2 {
+  margin: 0 0 0.4rem;
+  color: var(--eval-guinda);
+  font-size: 1.7rem;
+  font-weight: 800;
+}
+
+.lista-header p {
+  margin: 0;
+  color: #6b7280;
+  font-size: 0.95rem;
+}
+
+.tabla-container {
+  overflow-x: auto;
+  margin-bottom: 1.5rem;
+}
+
+.tabla-profesores {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #ffffff;
+}
+
+.tabla-profesores thead {
+  background: linear-gradient(135deg, var(--eval-guinda) 0%, var(--eval-guinda-dark) 100%);
+  color: #ffffff;
+}
+
+.tabla-profesores thead th {
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.tabla-profesores thead th:first-child {
+  border-radius: 8px 0 0 0;
+  text-align: center;
+  width: 60px;
+}
+
+.tabla-profesores thead th:last-child {
+  border-radius: 0 8px 0 0;
+  text-align: center;
+  width: 150px;
+}
+
+.tabla-profesores tbody tr {
+  border-bottom: 1px solid var(--eval-border);
+  transition: background-color 0.15s ease;
+}
+
+.tabla-profesores tbody tr:hover {
+  background-color: #fef2f5;
+}
+
+.tabla-profesores tbody tr:last-child {
+  border-bottom: none;
+}
+
+.tabla-profesores tbody td {
+  padding: 1rem;
+  font-size: 0.95rem;
+  color: #374151;
+}
+
+.tabla-profesores tbody td:first-child {
+  text-align: center;
+  font-weight: 600;
+  color: var(--eval-guinda);
+}
+
+.tabla-profesores tbody td:last-child {
+  text-align: center;
+}
+
+.nombre-profesor {
+  font-weight: 500;
+  color: var(--eval-text);
+}
+
+.btn-evaluar {
+  background: linear-gradient(135deg, var(--eval-guinda) 0%, var(--eval-guinda-dark) 100%);
+  color: #ffffff;
+  border: none;
+  padding: 0.5rem 1.5rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  box-shadow: 0 2px 6px rgba(125, 0, 36, 0.25);
+}
+
+.btn-evaluar:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(125, 0, 36, 0.35);
+}
+
+.sin-datos {
+  text-align: center;
+  padding: 2rem !important;
+  color: #9ca3af;
+  font-style: italic;
+}
+
+/* =================== PROFESOR EVALUANDO =================== */
+
+.profesor-evaluando {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--eval-border);
+}
+
+.profesor-evaluando h2 {
+  margin: 0;
+  color: var(--eval-guinda);
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.btn-volver-lista {
+  background-color: #6b7280;
+  color: #ffffff;
+  border: none;
+  padding: 0.5rem 1.2rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.btn-volver-lista:hover {
+  background-color: #4b5563;
+  transform: translateX(-2px);
+}
+
+/* =================== RESPONSIVE =================== */
+
+@media (max-width: 900px) {
+  .main-content {
+    padding: 1.6rem 1.4rem;
+  }
+
+  .evaluacion-header,
+  .formulario-evaluacion,
+  .lista-profesores {
+    padding: 1.5rem 1.4rem 1.8rem;
+  }
+
+  .profesor-evaluando {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+
+  .btn-volver-lista {
+    align-self: flex-end;
+  }
+}
+
+@media (max-width: 768px) {
+  .evaluacion-container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    padding: 1rem 1.3rem;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .menu {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .main-content {
+    padding: 1.4rem 1.2rem 1.8rem;
+  }
+
+  .botones-container,
+  .botones-resultado {
+    flex-direction: column;
+  }
+
+  .btn-enviar,
+  .btn-cancelar,
+  .btn-nueva,
+  .btn-volver {
+    width: 100%;
+    max-width: 260px;
+  }
+
+  .tabla-profesores thead th,
+  .tabla-profesores tbody td {
+    padding: 0.7rem 0.5rem;
+    font-size: 0.85rem;
+  }
+
+  .btn-evaluar {
+    padding: 0.4rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  .profesor-evaluando h2 {
+    font-size: 1.2rem;
+  }
+}
+
+/* ================================
+   ESTILOS RESULTADO (Clean & Centered)
+   ================================ */
+
+.resultado-evaluacion {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh;
+  padding: 2rem;
+}
+
+.resultado-card {
+  background-color: #ffffff;
+  padding: 3rem 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* Sombra suave y moderna */
+  text-align: center;
+  max-width: 600px;
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.resultado-card h2 {
+  color: var(--eval-guinda);
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+
+.resultado-info {
+  margin-top: 1.5rem;
+}
+
+.resultado-info p {
+  color: #4b5563;
+  font-size: 1.1rem;
+   margin: 0.5rem 0;
+}
+
+.puntuacion-box {
+  background: #fdf2f4; /* Fondo rosita muy claro */
+  border: 2px solid var(--eval-guinda);
+  padding: 2rem;
+  border-radius: 12px;
+  margin: 2rem 0;
+  color: var(--eval-text);
+}
+
+.puntuacion-label {
+  color: var(--eval-guinda);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+}
+
+.puntuacion-valor {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: var(--eval-guinda);
+  margin: 0.5rem 0;
+  line-height: 1;
+}
+
+.registro-count {
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+/* Botones Resultado */
+.botones-resultado {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.btn-nueva,
+.btn-volver {
+  width: auto;
+  min-width: 200px;
+  padding: 0 2rem;
+  height: 50px;
+  font-size: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.btn-nueva {
+  background-color: var(--eval-guinda);
+  color: white;
+  box-shadow: 0 4px 12px rgba(125, 0, 36, 0.2);
+}
+
+.btn-nueva:hover {
+  background-color: var(--eval-guinda-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(125, 0, 36, 0.3);
+}
+
+.btn-volver {
+  background-color: white;
+  color: #4b5563;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.btn-volver:hover {
+  background-color: #f9fafb;
+  color: #111827;
+  border-color: #d1d5db;
+  transform: translateY(-2px);
+}
+
+

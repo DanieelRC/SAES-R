@@ -1,0 +1,183 @@
+:root{
+  --guinda:#6e0028; --guinda-2:#8b0e39; --rojo:#b71c1c; --azul:#0033a0;
+  --azul-10:#e6eeff; /* borde azul claro */
+  --borde:#e7e9ee; --bg:#fff; --ink:#0f172a; --muted:#667085;
+  --ok:#148451; --err:#d93025;
+
+  --radius-lg:18px; --radius-md:12px;
+  --shadow-sm:0 2px 10px rgba(0,0,0,.06);
+  --shadow-md:0 8px 24px rgba(16,24,40,.08);
+  --focus:0 0 0 4px rgba(0,51,160,.18);
+}
+
+/* Layout base */
+.rc-wrap{ max-width:1120px; margin:32px auto 48px; padding:0 20px; background:var(--bg); color:var(--ink); }
+
+/* Header estilo institucional */
+.rc-header{ display:flex; align-items:center; justify-content:space-between; gap:16px; padding:8px 4px 4px; border-bottom:1px solid var(--azul-10); }
+.rc-header h1{ margin:0; font-size:28px; font-weight:800; color:var(--guinda); letter-spacing:.2px; }
+.rc-sub{ color:var(--azul); margin:.25rem 0 10px; font-weight:600; }
+.rc-logo{ height:54px; width:auto; object-fit:contain; filter:drop-shadow(0 1px 3px rgba(0,0,0,.06)); }
+
+/* Card principal */
+.rc-card{ margin-top:18px; background:#fff; border:1px solid var(--azul-10); border-radius:var(--radius-lg); padding:22px; box-shadow:var(--shadow-md); }
+
+/* Banner tips */
+.rc-banner{
+  display:flex; gap:10px; align-items:center; padding:10px 12px; margin-bottom:12px;
+  background:linear-gradient(180deg, #fff, #fafbff);
+  border:1px dashed var(--azul-10); border-radius:var(--radius-md);
+  color:var(--muted); font-weight:600;
+}
+
+/* Grid */
+.rc-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+@media (max-width:1000px){ .rc-grid{ grid-template-columns:repeat(2,1fr);} }
+@media (max-width:680px){ .rc-grid{ grid-template-columns:1fr; } }
+
+/* Campo */
+.rc-field label{
+  display:flex; align-items:center; gap:6px;
+  font-weight:700; color:#111827; margin:0 0 6px;
+}
+.rc-field label::after{ content:""; flex:1; height:1px; background:var(--azul-10); margin-left:8px; opacity:.8; }
+
+.rc-field input,.rc-field select{
+  width:100%; border:1px solid var(--borde); border-radius:var(--radius-md);
+  padding:12px 14px; outline:none; background:#fff;
+  transition:border .2s, box-shadow .2s, transform .03s ease;
+}
+.rc-field input::placeholder{ color:#98a2b3; }
+.rc-field input:focus,.rc-field select:focus{ border-color:var(--azul); box-shadow:var(--focus); }
+.rc-field input:active{ transform:translateY(.5px); }
+
+/* Ayuda y pills */
+.rc-help{ display:block; margin-top:6px; font-size:12.5px; color:var(--muted); }
+.rc-pill{ display:inline-flex; align-items:center; gap:8px; padding:6px 10px; background:#fff; border:1px dashed var(--azul-10); border-radius:999px; color:var(--muted); font-weight:700; margin-top:8px; }
+
+/* Acciones */
+.rc-actions{ margin-top:18px; display:flex; gap:12px; flex-wrap:wrap; }
+.rc-btn{ border-radius:14px; padding:12px 18px; font-weight:800; letter-spacing:.3px; border:1px solid transparent; cursor:pointer; transition:filter .2s, transform .05s, box-shadow .2s; }
+.rc-btn:active{ transform:translateY(1px); }
+.rc-btn.primary{ color:#fff; background:linear-gradient(135deg,var(--guinda),var(--guinda-2)); box-shadow:0 10px 18px rgba(110,0,40,.18); }
+.rc-btn.primary:hover{ filter:saturate(1.05) brightness(1.02); }
+.rc-btn.ghost{ background:#fff; border-color:var(--azul); color:var(--azul); }
+.rc-btn.ghost:hover{ background:rgba(0,51,160,.06); }
+
+/* Alertas */
+.rc-alert{ margin-top:16px; padding:12px 14px; border-radius:14px; border:1px solid; font-weight:700; }
+.rc-alert.ok{ color:var(--ok); background:#f1fbf5; border-color:#a8e6c1; }
+.rc-alert.error{ color:var(--err); background:#fff2f1; border-color:#ffc8c1; }
+
+/* ===== Estilo directo para el formulario actual ===== */
+
+.formulario{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+/* Etiquetas dentro del formulario */
+.formulario label{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  font-weight:700;
+  color:#111827;
+  margin:4px 0 4px;
+}
+
+/* Línea tenue después del texto de la etiqueta (imitando rc-field) */
+.formulario label::after{
+  content:"";
+  flex:1;
+  height:1px;
+  background:var(--azul-10);
+  margin-left:8px;
+  opacity:.8;
+}
+
+/* Inputs y selects dentro del formulario */
+.formulario input,
+.formulario select{
+  width:100%;
+  border:1px solid var(--borde);
+  border-radius:var(--radius-md);
+  padding:10px 12px;
+  outline:none;
+  background:#fff;
+  font-size:.95rem;
+  transition:border .2s, box-shadow .2s, transform .03s ease;
+}
+
+.formulario input:focus,
+.formulario select:focus{
+  border-color:var(--azul);
+  box-shadow:var(--focus);
+}
+
+.formulario input:active{
+  transform:translateY(.5px);
+}
+
+/* Botón del formulario */
+.formulario button{
+  margin-top:16px;
+  align-self:flex-end;
+}
+
+.dias-container {
+  display: flex;
+  gap: 15px;
+  margin: 20px 0;
+  flex-wrap: wrap;
+}
+
+.dia-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.dia-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid #d93025;
+  background-color: white;
+  color: #d93025;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dia-btn:hover {
+  background-color: #f0f0f0;
+}
+
+.dia-btn.activo {
+  background-color: #d93025;
+  color: white;
+}
+
+.horas-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 150px;
+}
+
+.horas-inputs input {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.horas-inputs input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+

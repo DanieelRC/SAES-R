@@ -1,0 +1,233 @@
+:root {
+  --guinda: #6e0028;
+  --guinda-2: #8b0e39;
+  --azul: #0033a0;
+  --borde: #e5e7eb;
+  --ok: #0f9d58;
+  --err: #d93025;
+}
+
+/* Contenedor general de la vista */
+.eg-wrap {
+  max-width: 1000px;
+  margin: 32px auto;
+  padding: 0 16px 32px;
+  background: #ffffff;
+}
+
+/* Ajuste específico para la pantalla de Editar Grupo */
+.eg-editar-grupo {
+  box-sizing: border-box;
+}
+
+/* Título principal */
+.eg-title {
+  margin: 0 0 16px;
+  color: var(--guinda);
+  font-size: 1.9rem;
+  font-weight: 800;
+  text-align: left;
+  border-bottom: 3px solid var(--guinda);
+  padding-bottom: 6px;
+}
+
+/* Tarjeta del formulario */
+.eg-card {
+  margin-top: 12px;
+  background: #ffffff;
+  border: 1px solid var(--borde);
+  border-radius: 18px;
+  padding: 20px 20px 22px;
+  box-shadow: 0 10px 24px rgba(110, 0, 40, 0.06);
+}
+
+/* Formulario en una sola columna ordenada */
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Etiquetas de los campos */
+.eg-label {
+  display: block;
+  font-weight: 700;
+  color: #111827;
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+/* Inputs y selects */
+.eg-input,
+.eg-select {
+  width: 100%;
+  border: 1px solid var(--borde);
+  border-radius: 12px;
+  padding: 10px 12px;
+  outline: none;
+  font-size: 0.95rem;
+  background: #ffffff;
+  transition: border 0.2s ease, box-shadow 0.2s ease, transform 0.08s ease;
+}
+
+.eg-input:focus,
+.eg-select:focus {
+  border-color: var(--azul);
+  box-shadow: 0 0 0 3px rgba(0, 51, 160, 0.12);
+  transform: translateY(-1px);
+}
+
+/* Botón principal */
+.eg-btn {
+  border-radius: 12px;
+  padding: 12px 18px;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+/* Botón de acción principal tipo SAES */
+.eg-btn.primary,
+.eg-submit {
+  margin-top: 14px;
+  align-self: flex-end;
+  color: #ffffff;
+  background: linear-gradient(135deg, var(--guinda), var(--guinda-2));
+  box-shadow: 0 10px 18px rgba(110, 0, 40, 0.18);
+}
+
+.eg-btn.primary:hover,
+.eg-submit:hover {
+  filter: saturate(1.06) brightness(1.03);
+  transform: translateY(-1px);
+}
+
+.eg-btn.primary:active,
+.eg-submit:active {
+  transform: translateY(0);
+  box-shadow: 0 6px 12px rgba(110, 0, 40, 0.22);
+}
+
+/* Responsivo */
+@media (max-width: 640px) {
+  .eg-wrap {
+    margin-top: 20px;
+  }
+
+  .eg-card {
+    padding: 16px 14px 18px;
+  }
+
+  .eg-title {
+    font-size: 1.6rem;
+  }
+}
+
+/* Extras reutilizables (por si luego los usas en otras vistas) */
+
+.eg-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.eg-header h1 {
+  margin: 0;
+  color: var(--guinda);
+}
+
+.eg-sub {
+  color: var(--azul);
+  margin: 0.25rem 0 0;
+  font-weight: 600;
+}
+
+.eg-logo {
+  height: 48px;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.08));
+}
+
+.eg-loading {
+  font-weight: 700;
+}
+
+.eg-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+@media (max-width: 900px) {
+  .eg-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .eg-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.eg-field label {
+  display: block;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 6px;
+}
+
+.eg-field input,
+.eg-field select {
+  width: 100%;
+  border: 1px solid var(--borde);
+  border-radius: 12px;
+  padding: 12px 14px;
+  outline: none;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+
+.eg-field input:focus,
+.eg-field select:focus {
+  border-color: var(--azul);
+  box-shadow: 0 0 0 4px rgba(0, 51, 160, 0.12);
+}
+
+.eg-actions {
+  margin-top: 16px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.eg-btn.ghost {
+  background: transparent;
+  border-color: var(--azul);
+  color: var(--azul);
+}
+
+.eg-btn.ghost:hover {
+  background: rgba(0, 51, 160, 0.06);
+}
+
+.eg-alert {
+  margin-top: 14px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid;
+  font-weight: 700;
+}
+
+.eg-alert.ok {
+  color: var(--ok);
+  background: #f1fbf5;
+  border-color: #a8e6c1;
+}
+
+.eg-alert.error {
+  color: var(--err);
+  background: #fff3f2;
+  border-color: #f6b8b0;
+}

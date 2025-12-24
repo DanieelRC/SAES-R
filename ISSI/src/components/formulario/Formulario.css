@@ -1,0 +1,24 @@
+.formulario {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.recover-link {
+  text-align: center;
+  margin-top: 16px;
+}
+
+.recover-link a {
+  color: #667eea;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s;
+}
+
+.recover-link a:hover {
+  color: #764ba2;
+  text-decoration: underline;
+}

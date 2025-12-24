@@ -1,0 +1,255 @@
+/* Sección de gestión de carreras dentro de main-content */
+.carreras-section {
+  margin-top: 1.5rem;
+}
+
+/* Card principal */
+.carreras-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 2rem 2.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  max-width: 1000px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* Subtítulo en el header */
+.subtitulo-carreras {
+  color: #555;
+  font-size: 0.95rem;
+  margin-top: 0.25rem;
+}
+
+/* Mensajes arriba de la tabla */
+.mensaje-carreras {
+  margin-bottom: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  background-color: #fce7eb;
+  color: #701a1a;
+  font-weight: 500;
+}
+
+/* Header de la card (título + botón) */
+.carreras-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.carreras-header-row h2 {
+  margin: 0;
+  color: #222;
+}
+
+/* Botón "Nueva carrera" */
+.btn-nueva-carrera {
+  background-color: #701a1a;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.4rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.25s ease;
+}
+
+.btn-nueva-carrera:hover {
+  background-color: #60001c;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(125, 0, 36, 0.3);
+}
+
+/* Texto cargando */
+.texto-cargando {
+  color: #555;
+  font-style: italic;
+}
+
+/* Tabla */
+.tabla-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.tabla-carreras {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.tabla-carreras thead {
+  background-color: #fce7eb;
+}
+
+.tabla-carreras th,
+.tabla-carreras td {
+  padding: 0.75rem 0.9rem;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.tabla-carreras th {
+  font-weight: 600;
+  color: #701a1a;
+  white-space: nowrap;
+}
+
+.tabla-carreras tbody tr:hover {
+  background-color: #faf5f7;
+}
+
+/* Fila sin registros */
+.sin-registros {
+  text-align: center;
+  color: #777;
+  font-style: italic;
+}
+
+/* Columna de acciones */
+.acciones-col {
+  white-space: nowrap;
+}
+
+/* Botones de acción (editar) */
+.btn-accion {
+  border: none;
+  border-radius: 6px;
+  padding: 0.3rem 0.7rem;
+  margin-right: 0.4rem;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn-accion.editar {
+  background-color: #e0ecff;
+  color: #1e3a8a;
+}
+
+.btn-accion.editar:hover {
+  background-color: #c3d9ff;
+}
+
+/* MODAL */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  z-index: 999; /* encima del contenido */
+}
+
+.modal-card {
+  background: #ffffff;
+  padding: 1.8rem 2rem;
+  max-width: 480px;
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+}
+
+.modal-card h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #222;
+}
+
+.modal-form {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.modal-form input {
+  padding: 0.7rem 0.8rem;
+  border-radius: 8px;
+  border: 2px solid #ddd;
+  font-size: 0.95rem;
+  font-family: inherit;
+  transition: all 0.2s ease;
+}
+
+.modal-form input:focus {
+  outline: none;
+  border-color: #701a1a;
+  box-shadow: 0 0 0 3px rgba(125, 0, 36, 0.15);
+}
+
+/* Botones del modal */
+.modal-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.8rem;
+  justify-content: flex-end;
+}
+
+.btn-guardar,
+.btn-cancelar-modal {
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem 1.4rem;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.btn-guardar {
+  background-color: #701a1a;
+  color: #ffffff;
+}
+
+.btn-guardar:hover {
+  background-color: #60001c;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(125, 0, 36, 0.3);
+}
+
+.btn-cancelar-modal {
+  background-color: #e5e7eb;
+  color: #374151;
+}
+
+.btn-cancelar-modal:hover {
+  background-color: #d1d5db;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .carreras-card {
+    padding: 1.5rem;
+  }
+
+  .carreras-header-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .btn-nueva-carrera {
+    width: 100%;
+    text-align: center;
+  }
+
+  .modal-card {
+    padding: 1.5rem;
+  }
+
+  .modal-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn-guardar,
+  .btn-cancelar-modal {
+    width: 100%;
+  }
+}

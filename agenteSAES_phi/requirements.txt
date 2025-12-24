@@ -1,0 +1,16 @@
+fastapi
+uvicorn
+pydantic
+sentence-transformers
+keybert
+faiss-cpu
+spacy
+unidecode
+pymupdf
+numpy
+tqdm
+cachetools
+python-multipart
+mysql-connector-python
+python-dotenv
+xai-sdk

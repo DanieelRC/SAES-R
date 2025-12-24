@@ -1,0 +1,549 @@
+/* =======================
+   CONTENEDOR DEL MODAL PDF
+   ======================= */
+.ets-pdf-modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;      /* centra horizontalmente el contenido */
+  justify-content: center;  /* centra verticalmente dentro del modal */
+  gap: 1rem;
+  padding: 1.25rem 2rem 1.5rem;
+  width: min(860px, 100%);
+  max-height: 90vh;
+  background-color: #ffffff;
+  box-sizing: border-box;
+  margin: 0 auto;           /* centra el cuadro dentro del contenedor del Modal */
+}
+
+/* Título */
+.ets-pdf-title {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.4rem;
+  font-weight: 600;
+  text-align: center;
+  color: #701a1a; /* guinda ESCOM */
+}
+
+/* ===============
+   BOTONES ARRIBA
+   =============== */
+.ets-pdf-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* Estilo base de los botones */
+.ets-pdf-actions button {
+  padding: 0.5rem 1.4rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    background-color 0.15s ease,
+    color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+/* VALIDAR: guinda sólido, texto blanco */
+.btn-validar {
+  background-color: #701a1a;
+  color: #ffffff;
+  border: 1px solid #701a1a;
+}
+
+.btn-validar:hover {
+  background-color: #701a1a;
+  border-color: #701a1a;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn-validar:active {
+  transform: translateY(0);
+  box-shadow: none;
+  opacity: 0.95;
+}
+
+/* DENEGAR: fondo blanco, borde guinda, texto guinda */
+.btn-denegar {
+  background-color: #ffffff;
+  color: #701a1a;
+  border: 1px solid #701a1a;
+}
+
+.btn-denegar:hover {
+  background-color: #f8e9ee;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+}
+
+.btn-denegar:active {
+  transform: translateY(0);
+  box-shadow: none;
+  opacity: 0.95;
+}
+
+/* =====================
+   ÁREA DONDE VA EL PDF
+   ===================== */
+.ets-pdf-frame {
+  margin-top: 0.75rem;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid #e0e0e0;
+  background-color: #fafafa;
+
+  width: 100%;   /* ocupa todo el ancho del modal */
+  height: 60vh;  /* alto cómodo, centrado visualmente */
+}
+
+/* El <embed> debe llenar totalmente el contenedor */
+.ets-pdf-frame embed {
+  display: block;
+  width: 100%;
+  height: 100% !important; /* ignora el height inline del JSX */
+  border: none;
+}
+
+/* Mensaje de error cuando no hay PDF */
+.ets-pdf-error {
+  margin: 0;
+  padding: 1rem;
+  text-align: center;
+  color: #701a1a;
+  font-weight: 500;
+}
+
+/* ==========
+   RESPONSIVO
+   ========== */
+@media (max-width: 768px) {
+  .ets-pdf-modal {
+    width: 100%;
+    padding: 1rem;
+    max-height: 95vh;
+  }
+
+  .ets-pdf-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .ets-pdf-actions button {
+    width: 100%;
+    max-width: 260px;
+  }
+
+  .ets-pdf-frame {
+    height: 55vh;
+  }
+}
+
+/* ============================
+   MODAL COMPROBANTES (TABLA)
+   ============================ */
+
+.ets-comprobantes-modal {
+  padding: 1.25rem 1.75rem 1.5rem;
+  min-width: 520px;
+  max-width: 720px;
+  box-sizing: border-box;
+  overflow-x: auto;
+}
+
+.ets-comprobantes-title {
+  margin: 0 0 1rem 0;
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: 0.06em;
+  color: #222222;
+}
+
+/* Tabla de comprobantes */
+.ets-comprobantes-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+/* Encabezados */
+.ets-comprobantes-table thead th {
+  background-color: #701a1a;   /* guinda ESCOM */
+  color: #ffffff;
+  font-weight: 600;
+  text-align: left;
+  padding: 0.6rem 0.75rem;
+  border-bottom: 2px solid #701a1a;
+}
+
+/* Celdas del cuerpo */
+.ets-comprobantes-table tbody td {
+  padding: 0.55rem 0.75rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+/* Filas alternadas para mejor lectura */
+.ets-comprobantes-table tbody tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+/* Hover sobre filas */
+.ets-comprobantes-table tbody tr:hover {
+  background-color: #f1e6ea;
+}
+
+/* Botón "Ver comprobante" */
+.ets-comprobantes-btn-ver {
+  padding: 0.35rem 0.9rem;
+  border-radius: 4px;
+  border: 1px solid #701a1a;
+  background-color: #ffffff;
+  color: #701a1a;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease,
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.ets-comprobantes-btn-ver:hover {
+  background-color: #701a1a;
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+}
+
+.ets-comprobantes-btn-ver:active {
+  transform: translateY(0);
+  box-shadow: none;
+  opacity: 0.95;
+}
+
+/* Mensaje cuando no hay alumnos */
+.ets-comprobantes-table tbody tr td[colspan] {
+  text-align: center;
+  font-style: italic;
+  color: #555555;
+}
+
+/* Responsivo para pantallas chicas */
+@media (max-width: 768px) {
+  .ets-comprobantes-modal {
+    min-width: 100%;
+    padding: 1rem;
+  }
+
+  .ets-comprobantes-table {
+    font-size: 0.9rem;
+  }
+
+  .ets-comprobantes-title {
+    font-size: 1.3rem;
+  }
+}
+
+/* ===============================
+   VISTA PRINCIPAL ETS (TABLA)
+   =============================== */
+
+.ets-page {
+  padding: 2rem;
+  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+  background-color: #f9f9fb;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Encabezado (título + botón) */
+.ets-page-header {
+  width: 100%;
+  max-width: 1100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.ets-page-title {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #333333;
+}
+
+/* Botón "Crear nuevo grupo" */
+.ets-create-btn {
+  padding: 0.5rem 1.4rem;
+  border-radius: 6px;
+  border: 1px solid #701a1a;
+  background-color: #701a1a;
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease,
+    box-shadow 0.15s ease,
+    transform 0.15s ease;
+}
+
+.ets-create-btn:hover {
+  background-color: #701a1a;
+  border-color: #701a1a;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+}
+
+.ets-create-btn:active {
+  transform: translateY(0);
+  box-shadow: none;
+  opacity: 0.95;
+}
+
+/* Contenedor de la tabla (centra y pone "card") */
+.ets-table-container {
+  width: 100%;
+  max-width: 1100px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+  padding: 1rem 1.25rem;
+  box-sizing: border-box;
+  overflow-x: auto;
+}
+
+/* Tabla ETS */
+.ets-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+/* Encabezados */
+.ets-table thead th {
+  background-color: #701a1a; /* guinda */
+  color: #ffffff;
+  font-weight: 600;
+  padding: 0.6rem 0.75rem;
+  text-align: left;
+}
+
+/* Celdas */
+.ets-table tbody td {
+  padding: 0.55rem 0.75rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+/* Zebra */
+.ets-table tbody tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+/* Hover fila */
+.ets-table tbody tr:hover {
+  background-color: #f1e6ea;
+}
+
+/* Mensaje cuando no hay registros */
+.ets-table-empty {
+  text-align: center;
+  padding: 1rem 0;
+  font-style: italic;
+  color: #555555;
+}
+
+/* Botón "Revisar comprobantes de pago" */
+.ets-btn-revisar {
+  padding: 0.35rem 0.9rem;
+  border-radius: 4px;
+  border: 1px solid #701a1a;
+  background-color: #ffffff;
+  color: #701a1a;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease,
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.ets-btn-revisar
+
+/* ===============================
+   VISTA PRINCIPAL ETS (TABLA)
+   =============================== */
+
+.ets-page {
+  padding: 2rem;
+  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+  background-color: #f9f9fb;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Encabezado (título + botón) */
+.ets-page-header {
+  width: 100%;
+  max-width: 1100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.ets-page-title {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #333333;
+}
+
+/* Botón "Crear nuevo grupo" */
+.ets-create-btn {
+  padding: 0.5rem 1.4rem;
+  border-radius: 6px;
+  border: 1px solid #701a1a;
+  background-color: #701a1a;
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease,
+    box-shadow 0.15s ease,
+    transform 0.15s ease;
+}
+
+.ets-create-btn:hover {
+  background-color: #701a1a;
+  border-color: #701a1a;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+}
+
+.ets-create-btn:active {
+  transform: translateY(0);
+  box-shadow: none;
+  opacity: 0.95;
+}
+
+/* Contenedor de la tabla (centra y pone "card") */
+.ets-table-container {
+  width: 100%;
+  max-width: 1100px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.06);
+  padding: 1rem 1.25rem;
+  box-sizing: border-box;
+  overflow-x: auto;
+}
+
+/* Tabla ETS */
+.ets-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+/* Encabezados */
+.ets-table thead th {
+  background-color: #701a1a; /* guinda */
+  color: #ffffff;
+  font-weight: 600;
+  padding: 0.6rem 0.75rem;
+  text-align: left;
+}
+
+/* Celdas */
+.ets-table tbody td {
+  padding: 0.55rem 0.75rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+/* Zebra */
+.ets-table tbody tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+/* Hover fila */
+.ets-table tbody tr:hover {
+  background-color: #f1e6ea;
+}
+
+/* Mensaje cuando no hay registros */
+.ets-table-empty {
+  text-align: center;
+  padding: 1rem 0;
+  font-style: italic;
+  color: #555555;
+}
+
+/* Botón "Revisar comprobantes de pago" */
+.ets-btn-revisar {
+  padding: 0.35rem 0.9rem;
+  border-radius: 4px;
+  border: 1px solid #701a1a;
+  background-color: #ffffff;
+  color: #701a1a;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease,
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.ets-btn-revisar:hover {
+  background-color: #701a1a;
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+}
+
+.ets-btn-revisar:active {
+  transform: translateY(0);
+  box-shadow: none;
+  opacity: 0.95;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .ets-page {
+    padding: 1rem;
+  }
+
+  .ets-page-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .ets-page-title {
+    font-size: 1.4rem;
+  }
+
+  .ets-table-container {
+    padding: 0.75rem;
+  }
+
+  .ets-table {
+    font-size: 0.9rem;
+  }
+}
+
