@@ -25,6 +25,12 @@ app.set("port", process.env.PORT || 4000);
 // Aumentar límite para permitir imágenes en base64
 app.use(express.json({ limit: "5mb" }));
 app.use(express.urlencoded({ limit: "5mb", extended: true }));
+
+// Forzar charset utf-8 en todas las respuestas
+app.use((req, res, next) => {
+  res.charset = "utf-8";
+  next();
+});
 // CORS configurado para permitir credentials
 app.use(
   cors({
@@ -72,6 +78,7 @@ app.use("/api/profesor", profesorEvaluaciones);
 // Middleware Global de Manejo de Errores
 app.use((err, req, res, next) => {
   console.error("Error no controlado:", err);
+  res.header("Content-Type", "application/json; charset=utf-8");
   res.status(500).json({
     success: false,
     message: err.message || "Error interno del servidor",

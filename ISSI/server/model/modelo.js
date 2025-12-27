@@ -25,6 +25,8 @@ const sequelize = new Sequelize({
     charset: "utf8mb4",
     collate: "utf8mb4_unicode_ci",
   },
+  timezone: '-06:00', // Adjust timezone if necessary
+  charset: 'utf8mb4',
   pool: {
     max: 5,
     min: 0,
