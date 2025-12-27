@@ -13,10 +13,18 @@ const sequelize = new Sequelize({
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
   dialect: "mysql",
-  dialectOptions: isProduction,
+  dialectOptions: {
+    charset: "utf8mb4",
+    dateStrings: true,
+    typeCast: true,
+  },
   host: isProduction ? undefined : process.env.DB_HOST,
   port: isProduction ? undefined : parseInt(process.env.DB_PORT || "3306"),
   logging: false,
+  define: {
+    charset: "utf8mb4",
+    collate: "utf8mb4_unicode_ci",
+  },
   pool: {
     max: 5,
     min: 0,
