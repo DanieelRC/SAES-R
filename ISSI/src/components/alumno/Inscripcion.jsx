@@ -137,10 +137,18 @@ const [paginaActual, setPaginaActual] = useState(1);
   };
 
   const obtenerHorarioDia = (arr, dia) => {
-  if (!Array.isArray(arr)) return "";
-  const h = arr.find((d) => d.dia === dia);
-  return h ? `${h.hora_ini} - ${h.hora_fin}` : "";
-};
+    if (!Array.isArray(arr)) return "";
+    // Normalizar día para la comparación (eliminar acentos)
+    const diaNormalizado = dia.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    const h = arr.find((d) => {
+      if (!d || !d.dia) return false;
+      const diaHorarioNormalizado = d.dia
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
+      return diaHorarioNormalizado === diaNormalizado;
+    });
+    return h ? `${h.hora_ini} - ${h.hora_fin}` : "";
+  };
 
 
   // ========== DISTRIBUCIÓN HORARIA ==========
@@ -522,18 +530,19 @@ const gruposPaginados = gruposFiltrados.slice(inicio, fin);
 
         // función horarios por día
         const horasPorDia = (dia) => {
-          if (dia === "Miércoles") {
-            const vals = distribs
-              .filter(
-                (d) =>
-                  d &&
-                  (d.dia === "Miércoles" || d.dia === "Miércoles")
-              )
-              .map((d) => `${d.hora_ini} - ${d.hora_fin}`);
-            return vals.join(", ");
-          }
+          // Normalizar día para la comparación (eliminar acentos)
+          const diaNormalizado = dia
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "");
+
           const vals = distribs
-            .filter((d) => d && d.dia === dia)
+            .filter((d) => {
+              if (!d || !d.dia) return false;
+              const diaHorarioNormalizado = d.dia
+                .normalize("NFD")
+                .replace(/[\u0300-\u036f]/g, "");
+              return diaHorarioNormalizado === diaNormalizado;
+            })
             .map((d) => `${d.hora_ini} - ${d.hora_fin}`);
           return vals.join(", ");
         };
