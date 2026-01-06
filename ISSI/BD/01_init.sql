@@ -32,6 +32,7 @@ DROP TABLE IF EXISTS datos_personales;
 DROP TABLE IF EXISTS carrera;
 DROP TABLE IF EXISTS lista;
 
+
 -- ==================================================
 -- TABLAS DE USUARIOS Y DATOS PERSONALES
 -- ==================================================

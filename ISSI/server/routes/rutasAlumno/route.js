@@ -332,12 +332,12 @@ module.exports = (passport) => {
                 hora_ini: d.hora_ini,
                 hora_fin: d.hora_fin,
               })) || [
-                {
-                  dia: "Sin día",
-                  hora_ini: "",
-                  hora_fin: "",
-                },
-              ],
+                  {
+                    dia: "Sin día",
+                    hora_ini: "",
+                    hora_fin: "",
+                  },
+                ],
             };
 
             materias.push(base);
@@ -584,9 +584,8 @@ module.exports = (passport) => {
             (g.Unidad_Aprendizaje &&
               (g.Unidad_Aprendizaje.nombre || g.Unidad_Aprendizaje.Nombre)) ||
             "",
-          profesor: `${datosProf.nombre || ""} ${datosProf.ape_paterno || ""} ${
-            datosProf.ape_materno || ""
-          }`.trim(),
+          profesor: `${datosProf.nombre || ""} ${datosProf.ape_paterno || ""} ${datosProf.ape_materno || ""
+            }`.trim(),
           calificacion_profesor: datosProf.calificacion || null,
           cupo: g.cupo,
           dias,
@@ -1822,9 +1821,9 @@ module.exports = (passport) => {
         "Fechas encontradas:",
         fechas
           ? {
-              evalu_profe: fechas.evalu_profe,
-              fin_evalu_profe: fechas.fin_evalu_profe,
-            }
+            evalu_profe: fechas.evalu_profe,
+            fin_evalu_profe: fechas.fin_evalu_profe,
+          }
           : "No hay fechas"
       );
 
@@ -2318,8 +2317,12 @@ function toCDMX(date) {
 }
 
 function seTraslapan(d1, d2) {
+  // Normalizar días para eliminar acentos
+  const dia1 = d1.dia.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  const dia2 = d2.dia.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+
   // Solo comparar si es el mismo día
-  if (d1.dia !== d2.dia) return false;
+  if (dia1 !== dia2) return false;
 
   const ini1 = parseInt(d1.hora_ini.replace(":", ""));
   const fin1 = parseInt(d1.hora_fin.replace(":", ""));
